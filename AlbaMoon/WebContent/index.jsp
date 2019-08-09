@@ -9,6 +9,10 @@
 <body>
 	<h1>View Test</h1>
 	<a href="views/check.jsp">이동확인</a>
+<<<<<<< HEAD
 	<h2>머지 오류어떻게 나나 확인중</h2>
+=======
+	<h2>merge 테스트1</h2>
+>>>>>>> 1b43cd4ccedc744ab676ce17e56a0df9cace02b1
 </body>
 </html>
