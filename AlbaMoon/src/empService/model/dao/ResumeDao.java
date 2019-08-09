@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import empService.model.service.Recruit;
+import empService.model.vo.ApplicationState;
 import empService.model.vo.Resume;
 import static common.JDBCTemplate.*;
 
@@ -63,9 +64,9 @@ public class ResumeDao {
 	}
 	
 	
-	public ArrayList<Recruit> selectApplicationState(Connection conn, int empNum){
+	public ArrayList<ApplicationState> selectApplicationState(Connection conn, int empNum){
 		
-		ArrayList<Recruit> list = null;	
+		ArrayList<ApplicationState> list = null;	
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
@@ -78,18 +79,14 @@ public class ResumeDao {
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				list.add(new Recruit(
-									rs.getInt("USER_NO"),
-									rs.getString("user_id"),
-									rs.getString("user_pwd"),
-									rs.getString("user_name"),
-									rs.getString("phone"),
-									rs.getString("email"),
-									rs.getString("address"),
-									rs.getString("interest"),
-									rs.getDate("enroll_date"),
-									rs.getDate("modify_date"),
-									rs.getString("status")
+				list.add(new ApplicationState(
+									rs.getInt("APPLYNUM"),
+									rs.getInt("ENUM"),
+									rs.getInt("WNUM"),
+									rs.getString("WTITLE"),
+									rs.getString("OPNAME"),
+									rs.getDate("APPLYDATE"),
+									rs.getString("PASSORFAIL")
 									));
 			}
 			

@@ -1,6 +1,7 @@
 package empService.model.service;
 
 import empService.model.dao.ResumeDao;
+import empService.model.vo.ApplicationState;
 import empService.model.vo.Resume;
 
 import static common.JDBCTemplate.*;
@@ -39,11 +40,11 @@ public class ResumeService {
 	 * @param emp
 	 * @return 세션유저가 지원한 알바 리스트
 	 */
-	public ArrayList<Recruit> selectApplicationState(int empNum){
+	public ArrayList<ApplicationState> selectApplicationState(int empNum){
 		
 		Connection conn = getConnection();
 		
-		ArrayList<Recruit> list = new ResumeDao().selectApplicationState(conn, empNum);
+		ArrayList<ApplicationState> list = new ResumeDao().selectApplicationState(conn, empNum);
 		
 		close(conn);
 		

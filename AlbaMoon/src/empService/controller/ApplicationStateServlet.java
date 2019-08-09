@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import emp.model.vo.Emp;
 import empService.model.service.ResumeService;
+import empService.model.vo.ApplicationState;
 
 /**
  * Servlet implementation class ApplicationStateServlet
@@ -35,7 +36,7 @@ public class ApplicationStateServlet extends HttpServlet {
 		
 //		지원자모음 테이블에서 세션유저 id로 매칭되는 row들을 모아옴
 		Emp emp = (Emp)request.getSession().getAttribute("emp");
-		ArrayList<Recruit> list = new ResumeService().selectApplicationState(emp.getEmpNum());
+		ArrayList<ApplicationState> list = new ResumeService().selectApplicationState(emp.getEmpNum());
 		
 		RequestDispatcher view = request.getRequestDispatcher("/views/empService/ApplicationState.jsp");
 		view.forward(request, response);
