@@ -9,5 +9,6 @@
 <body>
 	<h1>View Test</h1>
 	<a href="views/check.jsp">이동확인</a>
+	<h2>merge 테스트1</h2>
 </body>
 </html>
