@@ -9,18 +9,19 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
-import empService.model.service.Recruit;
 import empService.model.vo.ApplicationState;
-import empService.model.vo.Resume;
+import empService.model.vo.EmpEvaluation;
+import empService.model.vo.EmpEvaluationBefore;
+import owner.model.vo.Resume;
 import static common.JDBCTemplate.*;
 
-public class ResumeDao {
+public class empServiceDao {
 
 	private Properties prop = new Properties();
 	
-	public ResumeDao() {
+	public empServiceDao() {
 		
-		String fileName = ResumeDao.class.getResource("/sql/empService/empService_query.properties").getPath();
+		String fileName = empServiceDao.class.getResource("/sql/empService/empService_query.properties").getPath();
 		
 		try {
 			prop.load(new FileReader(fileName));
@@ -61,6 +62,7 @@ public class ResumeDao {
 		}
 
 		return result;
+		
 	}
 	
 	
@@ -96,6 +98,75 @@ public class ResumeDao {
 			close(rs);
 			close(pstmt);
 		}
+		
+		return list;
+		
+	}
+	
+	public ArrayList<EmpEvaluation> selectEmpEval(Connection conn, int empNum) {
+		
+		ArrayList<EmpEvaluation> list = null;	
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = prop.getProperty("selectEmpEval");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, empNum);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				list.add(new EmpEvaluation(
+									rs.getString("OPNAME"),
+									rs.getInt("EEVALUPOINT"),
+									rs.getString("EEVALCOMMENT"),
+									rs.getDate("ENROLLDATE")
+									));
+			}
+			
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return list;
+		
+	}
+	
+	public ArrayList<EmpEvaluationBefore> selectEmpEvalBefore(Connection conn, int empNum) {
+		
+		ArrayList<EmpEvaluationBefore> list = null;	
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = prop.getProperty("selectEmpEvalBefore");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, empNum);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				list.add(new EmpEvaluationBefore(
+									rs.getString("OPNAME"),
+									rs.getString("WTITLE"),
+									rs.getDate("WORKSTARTTERM"),
+									rs.getDate("WORKENDTERM")
+									));
+			}
+			
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		
 		return list;
 		
 	}
