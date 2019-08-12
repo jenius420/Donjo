@@ -7,5 +7,6 @@ public class Bizmember {
 	private String userPwd;
 	private String corporateNo;
 	
+	
 
 }
