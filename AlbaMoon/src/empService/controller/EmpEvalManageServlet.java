@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import emp.model.vo.Emp;
-import empService.model.service.empServiceService;
+import empService.model.service.EmpEvalService;
 import empService.model.vo.ApplicationState;
 import empService.model.vo.EmpEvaluation;
 import empService.model.vo.EmpEvaluationBefore;
@@ -38,13 +38,13 @@ public class EmpEvalManageServlet extends HttpServlet {
 		
 		Emp emp = (Emp)request.getSession().getAttribute("emp");
 		
-		ArrayList<EmpEvaluation> empEval = new empServiceService().selectEmpEval(emp.getEmpNum());
+		ArrayList<EmpEvaluation> empEval = new EmpEvalService().selectEmpEval(emp.getEmpNum());
 		
 		if(empEval.size() > 0) {
 			request.setAttribute("empEval", empEval);
 		}
 		
-		ArrayList<EmpEvaluationBefore> empEvalBf = new empServiceService().selectEmpEvalBefore(emp.getEmpNum());
+		ArrayList<EmpEvaluationBefore> empEvalBf = new EmpEvalService().selectEmpEvalBefore(emp.getEmpNum());
 		
 		if(empEvalBf.size() > 0) {
 			request.setAttribute("empEvalBf", empEval);

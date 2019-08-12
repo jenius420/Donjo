@@ -4,6 +4,7 @@ import java.sql.Date;
 
 public class EmpEvaluationBefore {
 	
+	private int applyNum;
 	private String opName;
 	private String wTitle;
 	private Date workStartTerm;
@@ -14,12 +15,21 @@ public class EmpEvaluationBefore {
 		// TODO Auto-generated constructor stub
 	}
 
-	public EmpEvaluationBefore(String opName, String wTitle, Date workStartTerm, Date workEndTerm) {
+	public EmpEvaluationBefore(int applyNum, String opName, String wTitle, Date workStartTerm, Date workEndTerm) {
 		super();
 		this.opName = opName;
 		this.wTitle = wTitle;
 		this.workStartTerm = workStartTerm;
 		this.workEndTerm = workEndTerm;
+	}
+
+	
+	public int getApplyNum() {
+		return applyNum;
+	}
+
+	public void setApplyNum(int applyNum) {
+		this.applyNum = applyNum;
 	}
 
 	public String getOpName() {

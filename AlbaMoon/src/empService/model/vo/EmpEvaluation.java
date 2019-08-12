@@ -32,8 +32,9 @@ public class EmpEvaluation {
 	}
 	
 
-	public EmpEvaluation(String opname, int eevalPoint, String eevalComment, Date enrollDate) {
+	public EmpEvaluation(int eevalNum, String opname, int eevalPoint, String eevalComment, Date enrollDate) {
 		super();
+		this.eevalNum = eevalNum;
 		this.opname = opname;
 		this.eevalPoint = eevalPoint;
 		this.eevalComment = eevalComment;

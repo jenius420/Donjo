@@ -12,8 +12,8 @@ import javax.servlet.http.HttpSession;
 
 
 import emp.model.vo.Emp;
-import empService.model.service.empServiceService;
-import owner.model.vo.Resume;
+import empService.model.service.ResumeService;
+import empService.model.vo.Resume;
 
 /**
  * Servlet implementation class ResumeServlet
@@ -51,7 +51,7 @@ public class SubmitResumeServlet extends HttpServlet {
 		
 		Resume resume = new Resume(resumeTitle, empNum, district, type, comment, picture, desireForm, desireIncome, openSet, edu);
 		
-		int result = new empServiceService().enrollResume(resume);
+		int result = new ResumeService().enrollResume(resume);
 		
 		if(result > 0) {
 			request.getSession().setAttribute("msg", "이력서를 성공적으로 등록했습니다");
