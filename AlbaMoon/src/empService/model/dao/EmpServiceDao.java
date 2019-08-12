@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import emp.model.vo.Emp;
 import empService.model.vo.ApplicationState;
 import empService.model.vo.EmpEvaluation;
 import empService.model.vo.EmpEvaluationBefore;
@@ -19,9 +20,9 @@ public class EmpServiceDao {
 
 	private Properties prop = new Properties();
 	
-	public empServiceDao() {
+	public EmpServiceDao() {
 		
-		String fileName = empServiceDao.class.getResource("/sql/empService/empService_query.properties").getPath();
+		String fileName = EmpServiceDao.class.getResource("/sql/empService/empService_query.properties").getPath();
 		
 		try {
 			prop.load(new FileReader(fileName));
@@ -69,28 +70,28 @@ public class EmpServiceDao {
 		
 	}
 	
-	public ArrayList<EmpEvaluation> selectEmpEval(Connection conn, int empNum) {
+	public int[] selectInterestOwnerNum(Connection conn, String empNum){
 		
-		ArrayList<EmpEvaluation> list = null;	
+		int[] list = new int[5];	
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String sql = prop.getProperty("selectEmpEval");
+		String sql = prop.getProperty("selectInterestOwnerNum");
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, empNum);
+			pstmt.setString(1, empNum);
 			
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				list.add(new EmpEvaluation(
-									rs.getInt("EEVALNUM"),
-									rs.getString("OPNAME"),
-									rs.getInt("EEVALUPOINT"),
-									rs.getString("EEVALCOMMENT"),
-									rs.getDate("ENROLLDATE")
-									));
+				
+				list[0] = rs.getInt("ONUM1");
+				list[1] = rs.getInt("ONUM2");
+				list[2] = rs.getInt("ONUM3");
+				list[3] = rs.getInt("ONUM4");
+				list[4] = rs.getInt("ONUM5");
+
 			}
 			
 		}catch (SQLException e) {
@@ -104,28 +105,36 @@ public class EmpServiceDao {
 		
 	}
 	
-	public ArrayList<EmpEvaluationBefore> selectEmpEvalBefore(Connection conn, int empNum) {
+	public ArrayList<InterestOwner> selectInterestOwner(Connection conn, int[] listNum){
 		
-		ArrayList<EmpEvaluationBefore> list = null;	
+		ArrayList<InterestOwner> list = null;	
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String sql = prop.getProperty("selectEmpEvalBefore");
+		String sql = prop.getProperty("selectInterestOwner");
 		
 		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, empNum);
 			
-			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
-				list.add(new EmpEvaluationBefore(
-									rs.getInt("APPLYNUM"),
-									rs.getString("OPNAME"),
-									rs.getString("WTITLE"),
-									rs.getDate("WORKSTARTTERM"),
-									rs.getDate("WORKENDTERM")
-									));
+			for(int i=0; i<listNum.length; i++) {
+				
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, listNum[i]);
+				
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					// 필요한 기업정보 가져오기
+//					list.add(new InterestOwner( 
+//										rs.getInt("APPLYNUM"),
+//										rs.getInt("ENUM"),
+//										rs.getInt("WNUM"),
+//										rs.getString("WTITLE"),
+//										rs.getString("OPNAME"),
+//										rs.getDate("APPLYDATE"),
+//										rs.getString("PASSORFAIL")
+//										));
+				}
+				
 			}
 			
 		}catch (SQLException e) {
@@ -138,5 +147,6 @@ public class EmpServiceDao {
 		return list;
 		
 	}
+	
 
 }

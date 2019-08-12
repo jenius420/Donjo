@@ -1,23 +1,30 @@
 package empService.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import emp.model.vo.Emp;
+import empService.model.service.EmpServiceService;
+import empService.model.service.InterestOwner;
+
 /**
- * Servlet implementation class CreateEmpEvalServlet
+ * Servlet implementation class InterestOwnerManageServlet
  */
-@WebServlet("/createEmpEval.es")
-public class CreateEmpEvalServlet extends HttpServlet {
+@WebServlet("/interestOwner.es")
+public class InterestOwnerManageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CreateEmpEvalServlet() {
+    public InterestOwnerManageServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,12 +34,12 @@ public class CreateEmpEvalServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//String evalYn = "N"; 이미 평가한 경우 Y, 아직 평가전인 경우 N 
+		Emp emp = (Emp)request.getSession().getAttribute("emp");
 		
-		String applyNum = request.getParameter("applyNum");
+		ArrayList<InterestOwner> list = new EmpServiceService().selectInterestOwner(emp.getEmpNum());
 		
-		알바후기 작성 경로에 대해서는 고민해야함
-		
+		RequestDispatcher view = request.getRequestDispatcher("/views/empService/InterestOwnerManage.jsp");
+		view.forward(request, response);
 	}
 
 	/**
