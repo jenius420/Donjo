@@ -9,16 +9,12 @@
 <style>
 
     form{
-        /* border: 1px solid black; */
-        width: 295px;
+        border: 1px solid black;
+        width: 310px;
         resize: none;
         margin-left: auto;
         margin-right: auto;
 
-    }
-
-    table, div{
-        padding: 1px;
     }
 
     #login{
@@ -28,13 +24,13 @@
 
     #userId, #userPwd{
         height: 35px;
-        width: 220px
+        width: 235px
     }
 
     #joinMember, #findId, #findPwd{
-        width: 95px;
+        width: 100px;
         height: 40px;
-
+        
     }
 
     #joinMember{
@@ -48,34 +44,34 @@
 </head>
 <body>
 
-    <header>
+    <div>
 
+    </div>
 
-    </header>
-
-    <section>
+    <div>
         <form action="">
             <table>
                 <tr>
-                    <td><input type="text" name="userId" id="userId" placeholder="아이디"></td>
+                    <td><input type="text" name="userId" id="userId" minlength="4" maxlength="15" placeholder="아이디"></td>
                     <td rowspan="2"><input type="submit" id="login" value="로그인"></td>
                 </tr>
                 <tr>
-                    <td><input type="password" name="userPwd" id="userPwd" placeholder="비밀번호"></td>
+                    <td><input type="password" name="userPwd" id="userPwd" minlength="6" maxlength="16" placeholder="비밀번호"></td>
                 </tr>
                 <tr>
 
                 </tr>
             </table>
             <hr>
-            <div>
-                <input type="submit" id="findId" value="아이디 찾기">
-                <input type="submit" id="findPwd" value="비밀번호 찾기">
-                <input type="submit" id="joinMember" value="회원가입">
+            <div id="btn">
+                <button id="findId" onclick="">아이디 찾기</button>
+                <button id="findPwd" onclick="">비밀번호 찾기</button>
+                <button id="joinMember" onclick="">회원가입</button>
+
                 
             </div>
         </form>
-    </section>
+    </div>
 
     <script>
         

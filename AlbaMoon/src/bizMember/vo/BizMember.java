@@ -1,6 +1,6 @@
 package bizMember.vo;
 
-public class Bizmember {
+public class BizMember {
 	
 	private int userNo;
 	private String userId;
