@@ -49,7 +49,7 @@
     <div>
         <span>관심 정보</span>
         <ul>
-            <li>관심 기업</li>
+        	<div class="esLink" onclick="location.href='<%=request.getContextPath()%>/interestOwner.es';">관심 기업</div>
         </ul>
     </div>
     <div class="space"></div>
