@@ -64,9 +64,9 @@
             </table>
             <hr>
             <div id="btn">
-                <button id="findId" onclick="">아이디 찾기</button>
-                <button id="findPwd" onclick="">비밀번호 찾기</button>
-                <button id="joinMember" onclick="">회원가입</button>
+                <button id="findId" onclick="location.href='<%= request.getContextPath() %>/views/common/FindId.jsp'">아이디 찾기</button>
+                <button id="findPwd" onclick="location.href='<%= request.getContextPath() %>/views/common/FindPwd.jsp'">비밀번호 찾기</button>
+                <button id="joinMember" onclick="location.href='<%= request.getContextPath() %>/views/common/SelectJoinMember.jsp'">회원가입</button>
 
                 
             </div>
