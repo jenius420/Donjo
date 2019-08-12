@@ -1,26 +1,23 @@
 package empService.model.dao;
 
+import static common.JDBCTemplate.close;
+
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Properties;
 
-import empService.model.service.Recruit;
-import empService.model.vo.ApplicationState;
 import empService.model.vo.Resume;
-import static common.JDBCTemplate.*;
 
 public class ResumeDao {
-
-	private Properties prop = new Properties();
+	
+private Properties prop = new Properties();
 	
 	public ResumeDao() {
 		
-		String fileName = ResumeDao.class.getResource("/sql/empService/empService_query.properties").getPath();
+		String fileName = empServiceDao.class.getResource("/sql/empService/empService_query.properties").getPath();
 		
 		try {
 			prop.load(new FileReader(fileName));
@@ -61,42 +58,6 @@ public class ResumeDao {
 		}
 
 		return result;
-	}
-	
-	
-	public ArrayList<ApplicationState> selectApplicationState(Connection conn, int empNum){
-		
-		ArrayList<ApplicationState> list = null;	
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		
-		String sql = prop.getProperty("selectApplicationState");
-		
-		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, empNum);
-			
-			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
-				list.add(new ApplicationState(
-									rs.getInt("APPLYNUM"),
-									rs.getInt("ENUM"),
-									rs.getInt("WNUM"),
-									rs.getString("WTITLE"),
-									rs.getString("OPNAME"),
-									rs.getDate("APPLYDATE"),
-									rs.getString("PASSORFAIL")
-									));
-			}
-			
-		}catch (SQLException e) {
-			e.printStackTrace();
-		}finally {
-			close(rs);
-			close(pstmt);
-		}
-		return list;
 		
 	}
 

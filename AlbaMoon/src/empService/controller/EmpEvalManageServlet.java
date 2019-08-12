@@ -11,20 +11,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import emp.model.vo.Emp;
-import empService.model.service.EmpServiceService;
+import empService.model.service.EmpEvalService;
 import empService.model.vo.ApplicationState;
+import empService.model.vo.EmpEvaluation;
+import empService.model.vo.EmpEvaluationBefore;
 
 /**
- * Servlet implementation class ApplicationStateServlet
+ * Servlet implementation class EmpEvalManageServlet
  */
-@WebServlet("/applicationState.es")
-public class ApplicationStateServlet extends HttpServlet {
+@WebServlet("/empEvaluationManagement.es")
+public class EmpEvalManageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ApplicationStateServlet() {
+    public EmpEvalManageServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,15 +36,22 @@ public class ApplicationStateServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-//		지원자모음 테이블에서 세션유저 id로 매칭되는 row들을 모아옴
 		Emp emp = (Emp)request.getSession().getAttribute("emp");
-		ArrayList<ApplicationState> list = new EmpServiceService().selectApplicationState(emp.getEmpNum());
 		
-		if(list.size() > 0) {
-			request.setAttribute("applicationStatelist", list);
+		ArrayList<EmpEvaluation> empEval = new EmpEvalService().selectEmpEval(emp.getEmpNum());
+		
+		if(empEval.size() > 0) {
+			request.setAttribute("empEval", empEval);
 		}
 		
-		RequestDispatcher view = request.getRequestDispatcher("/views/empService/ApplicationState.jsp");
+		ArrayList<EmpEvaluationBefore> empEvalBf = new EmpEvalService().selectEmpEvalBefore(emp.getEmpNum());
+		
+		if(empEvalBf.size() > 0) {
+			request.setAttribute("empEvalBf", empEval);
+		}
+		
+		
+		RequestDispatcher view = request.getRequestDispatcher("/views/empService/EmpEvalManage.jsp");
 		view.forward(request, response);
 	}
 

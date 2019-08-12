@@ -42,7 +42,7 @@
         <span>알바 활동</span>
         <ul>
             <div class="esLink" onclick="location.href='<%=request.getContextPath()%>/applicationState.es';">알바 지원 현황</div>
-            <li>알바 후기 관리</li>
+            <div class="esLink" onclick="location.href='<%=request.getContextPath()%>/empEvaluationManagement.es';">알바 후기 관리</div>
         </ul>
     </div>
     <div class="space"></div>
