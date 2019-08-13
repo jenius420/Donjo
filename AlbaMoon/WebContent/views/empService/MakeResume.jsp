@@ -4,14 +4,14 @@
 %>
 <%@ include file="../empService/EmpServiceMenubar.jsp"%>
 <%	
-	Emp emp = (Emp) session.getAttribute("emp");
-	Boolean auth = true;
+	Emp emp = (Emp) session.getAttribute("loginUser");
+	Boolean accessAuth = true;
 	String eName = "";
 	int phone = 0;
 	String address = "";
 	String email = "";
 	if(emp == null){
-		auth = false;
+		accessAuth = false;
 	}else{
 		eName = emp.geteName();
 		phone = emp.getPhone();
