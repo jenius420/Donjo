@@ -9,7 +9,7 @@
 <style>
 
     form{
-        border: 1px solid black;
+        /* border: 1px solid black; */
         width: 310px;
         resize: none;
         margin-left: auto;
@@ -53,7 +53,7 @@
             <table>
                 <tr>
                     <td><input type="text" name="userId" id="userId" minlength="4" maxlength="15" placeholder="아이디"></td>
-                    <td rowspan="2"><input type="submit" id="login" value="로그인"></td>
+                    <td rowspan="2"><button id="login">로그인</button></td>
                 </tr>
                 <tr>
                     <td><input type="password" name="userPwd" id="userPwd" minlength="6" maxlength="16" placeholder="비밀번호"></td>
@@ -74,7 +74,9 @@
     </div>
 
     <script>
-        
+        $(function(){
+            
+        });
     
     
     </script>
