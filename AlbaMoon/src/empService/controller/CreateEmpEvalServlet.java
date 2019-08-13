@@ -27,6 +27,8 @@ public class CreateEmpEvalServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		request.setCharacterEncoding("UTF-8");
+		
 		//String evalYn = "N"; 이미 평가한 경우 Y, 아직 평가전인 경우 N 
 		
 		String applyNum = request.getParameter("applyNum");
