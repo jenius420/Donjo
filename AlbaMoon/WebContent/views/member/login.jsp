@@ -57,7 +57,7 @@
             <table>
                 <tr>
                     <td><input type="text" name="userId" id="userId" minlength="4" maxlength="15" placeholder="아이디"></td>
-                    <td rowspan="2"><button id="login" class="btn btn-secondary">로그인</button></td>
+                    <td rowspan="2"><button type="submit" id="login" class="btn btn-secondary">로그인</button></td>
                 </tr>
                 <tr>
                     <td><input type="password" name="userPwd" id="userPwd" minlength="6" maxlength="16" placeholder="비밀번호"></td>
@@ -79,6 +79,25 @@
     </div>
     
     <script>
+
+        function findId(){
+        	
+        	location.href="<%=request.getContextPath()%>/findId.me";
+            
+        }
+        
+        function findPwd(){
+        	
+        	location.href="<%=request.getContextPath()%>/findPwd.me";
+        }
+        
+        function joinmember(){
+        	
+            location.href="<%=request.getContextPath()%>/selectMemberJoin.me";
+        	
+        }
+        
+        
         
     </script>
 
