@@ -27,7 +27,7 @@
 </head>
 <body>
 
-	<form id="incruitForm" action="<%=request.getContextPath()%>/makeIncruit.os" method="POST">
+	<form id="incruitForm" action="<%=request.getContextPath()%>/submitIncruit.os" method="POST">
 		
 		제목 <input type="text" name="incruitTitle" id="incruitTitle"
 			placeholder="공고 제목">

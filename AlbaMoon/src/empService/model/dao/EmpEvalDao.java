@@ -20,7 +20,7 @@ public class EmpEvalDao {
 	
 	public EmpEvalDao() {
 		
-		String fileName = empServiceDao.class.getResource("/sql/empService/empService_query.properties").getPath();
+		String fileName = EmpEvalDao.class.getResource("/sql/empService/empService_query.properties").getPath();
 		
 		try {
 			prop.load(new FileReader(fileName));

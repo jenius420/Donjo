@@ -33,7 +33,7 @@
 <div class="osMenubar">
     <div>
         <span>공고</span>
-       	<div class="osLink" onclick="location.href='<%=request.getContextPath()%>/';">공고 등록</div>
+       	<div class="osLink" onclick="location.href='<%=request.getContextPath()%>/makeIncruit.os';">공고 등록</div>
         <div class="osLink" onclick="location.href='<%=request.getContextPath()%>/';">게제중인 공고</div>
         <div class="osLink" onclick="location.href='<%=request.getContextPath()%>/';">마감된 공고</div>
         <div class="osLink" onclick="location.href='<%=request.getContextPath()%>/';">지원자 관리</div>
