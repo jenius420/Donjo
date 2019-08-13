@@ -1,7 +1,7 @@
-package personMember.service;
+package member.model.service;
 
 public class PersonMemberService {
 	
-	public 
+	
 
 }

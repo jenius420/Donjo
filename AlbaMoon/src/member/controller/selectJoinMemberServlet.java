@@ -10,14 +10,14 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class selectMemberJoinServlet
  */
-@WebServlet(name = "SelectMemberJoinServlet", urlPatterns = { "/selectMemberJoin.me" })
-public class selectMemberJoinServlet extends HttpServlet {
+@WebServlet("/selectJoinMember.me")
+public class selectJoinMemberServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public selectMemberJoinServlet() {
+    public selectJoinMemberServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
