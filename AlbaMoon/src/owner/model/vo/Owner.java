@@ -1,6 +1,6 @@
 package owner.model.vo;
 
-public class OwnerInfo {
+public class Owner {
 	
 	private int oNum;
 	private String oId;
@@ -20,12 +20,12 @@ public class OwnerInfo {
 	private String invalidId;
 	private String checkONum;
 	
-	public OwnerInfo() {
+	public Owner() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public OwnerInfo(int oNum, String oId, String oPwd, String opName, int opNum, String dong, String opAddress,
+	public Owner(int oNum, String oId, String oPwd, String opName, int opNum, String dong, String opAddress,
 			String oName, int oTel, int ocNum, int phone, String email, String type, String mailAccept,
 			String smsAccept, String invalidId, String checkONum) {
 		super();
