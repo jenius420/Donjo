@@ -35,6 +35,7 @@ public class EmpServiceService {
 
 		int[] listNum = new EmpServiceDao().selectInterestOwnerNum(conn, empNum);
 		ArrayList<InterestOwner> iList = new EmpServiceDao().selectInterestOwner(conn, listNum);
+		// InterestOwner 타입을 따로 쓸지 아니면 사업자vo 통일할지 결정해야됨
 		
 		//관심기업에 해당하는 공고들 가져오는 DAO
 

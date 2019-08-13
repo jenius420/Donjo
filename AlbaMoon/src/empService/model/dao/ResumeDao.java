@@ -13,11 +13,11 @@ import empService.model.vo.Resume;
 
 public class ResumeDao {
 	
-private Properties prop = new Properties();
+	private Properties prop = new Properties();
 	
 	public ResumeDao() {
 		
-		String fileName = empServiceDao.class.getResource("/sql/empService/empService_query.properties").getPath();
+		String fileName = ResumeDao.class.getResource("/sql/empService/empService_query.properties").getPath();
 		
 		try {
 			prop.load(new FileReader(fileName));
