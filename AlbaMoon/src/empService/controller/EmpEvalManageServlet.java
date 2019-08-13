@@ -38,7 +38,7 @@ public class EmpEvalManageServlet extends HttpServlet {
 		
 		request.setCharacterEncoding("UTF-8");
 		
-		Emp emp = (Emp)request.getSession().getAttribute("emp");
+		Emp emp = (Emp)request.getSession().getAttribute("loginUser");
 		
 		ArrayList<EmpEvaluation> empEval = new EmpEvalService().selectEmpEval(emp.getEmpNum());
 		

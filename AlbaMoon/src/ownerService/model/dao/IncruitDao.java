@@ -6,9 +6,12 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Properties;
 
+import emp.model.vo.Emp;
 import empService.model.vo.Resume;
 import ownerService.model.vo.Incruit;
 
@@ -59,6 +62,95 @@ public class IncruitDao {
 		}
 
 		return result;
+		
+	}
+	
+	public ArrayList<Incruit> selectIncruitList(Connection conn, int oNum) {
+		
+		ArrayList<Incruit> list = null;
+		Incruit incruit = null;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = prop.getProperty("selectIncruitList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, oNum);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+//				incruit = new Incruit(
+//									rs.getInt("USER_NO"),
+//									rs.getString("user_id"),
+//									rs.getString("user_pwd"),
+//									rs.getString("user_name"),
+//									rs.getString("phone"),
+//									rs.getString("email"),
+//									rs.getString("address"),
+//									rs.getString("interest"),
+//									rs.getDate("enroll_date"),
+//									rs.getDate("modify_date"),
+//									rs.getString("status")
+//									);
+				list.add(incruit);
+			}
+			
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return list;
+		
+	}
+	
+	public ArrayList<??> selectManageEmp(Connection conn, int oNum){
+		
+		ArrayList<??> list = null;
+		Emp emp = null;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = prop.getProperty("selectManageEmp");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, oNum);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+//				incruit = new Incruit(
+//									rs.getInt("USER_NO"),
+//									rs.getString("user_id"),
+//									rs.getString("user_pwd"),
+//									rs.getString("user_name"),
+//									rs.getString("phone"),
+//									rs.getString("email"),
+//									rs.getString("address"),
+//									rs.getString("interest"),
+//									rs.getDate("enroll_date"),
+//									rs.getDate("modify_date"),
+//									rs.getString("status")
+//									);
+				list.add(emp);
+			}
+			
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return list;
+		
 		
 	}
 
