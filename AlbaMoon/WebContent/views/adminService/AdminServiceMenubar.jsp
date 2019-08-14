@@ -42,14 +42,15 @@
         <ul>
             <div class="esLink" onclick="location.href='<%=request.getContextPath()%>/ingIncruit.as';">진행중 공고</div>
             <div class="esLink" onclick="location.href='<%=request.getContextPath()%>/doneIncruit.as';">지난 공고</div>
-            <div class="esLink" onclick="location.href='<%=request.getContextPath()%>/manageProduct';">공고 상품 관리</div>
+            <div class="esLink" onclick="location.href='<%=request.getContextPath()%>/manageProduct.as';">공고 상품 관리</div>
         </ul>
     </div>
     <div class="space"></div>
     <div>
         <span>게시판 관리</span>
         <ul>
-        	<div class="esLink" onclick="location.href='<%=request.getContextPath()%>/';">게시글 신고내역</div>
+        	<div class="esLink" onclick="location.href='<%=request.getContextPath()%>/boardReportList.as';">게시글 신고내역</div>
+        	<div class="esLink" onclick="location.href='<%=request.getContextPath()%>/commentReportList.as';">댓글 신고내역</div>
         </ul>
     </div>
     <div class="space"></div>
