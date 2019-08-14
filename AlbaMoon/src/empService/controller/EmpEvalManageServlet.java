@@ -52,7 +52,6 @@ public class EmpEvalManageServlet extends HttpServlet {
 			request.setAttribute("empEvalBf", empEval);
 		}
 		
-		
 		RequestDispatcher view = request.getRequestDispatcher("/views/empService/EmpEvalManage.jsp");
 		view.forward(request, response);
 	}

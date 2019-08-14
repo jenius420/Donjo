@@ -1,4 +1,4 @@
-package ownerService.controller;
+package adminService.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -9,22 +9,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import adminService.model.service.ManageMemService;
 import emp.model.vo.Emp;
-import empService.model.vo.Resume;
+import member.model.vo.PersonMember;
 import owner.model.vo.Owner;
-import ownerService.model.service.IncruitService;
 
 /**
- * Servlet implementation class SearchResumeListServlet
+ * Servlet implementation class MemWarningServlet
  */
-@WebServlet("/SearchResumeListServlet")
-public class SearchResumeListServlet extends HttpServlet {
+@WebServlet("/memWarning.as")
+public class MemWarningServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SearchResumeListServlet() {
+    public MemWarningServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,20 +33,14 @@ public class SearchResumeListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		request.setCharacterEncoding("UTF-8");
-		
-		String str = request.getParameter("");
-		
-		필터vo 필터객체 = new 필터vo(컬럼컬럼);
-		
 
-		ArrayList<Resume> list = new IncruitService().selectSearchResumeList(필터객체);
+		ArrayList<Emp> empList = new ManageMemService().selectEmpList();
+		ArrayList<Owner> ownerList = new ManageMemService().selectOwnerList();
 		
-		request.setAttribute("", list); // 컬렉션 넘기는거는 게시판 배우고 나서 다시 보기
+		request.setAttribute("empList", empList);
+		request.setAttribute("ownerList", ownerList);
 		
-		request.getRequestDispatcher("/views/ownerService/searchResume.jsp").forward(request, response);
-		
+		request.getRequestDispatcher("/views/empService/MemWarning.jsp").forward(request, response);
 	}
 
 	/**

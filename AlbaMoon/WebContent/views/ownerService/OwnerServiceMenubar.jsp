@@ -35,19 +35,17 @@
         <span>공고</span>
        	<div class="osLink" onclick="location.href='<%=request.getContextPath()%>/makeIncruit.os';">공고 등록</div>
         <div class="osLink" onclick="location.href='<%=request.getContextPath()%>/incruitList.os';">공고 리스트</div>
-        <div class="osLink" onclick="location.href='<%=request.getContextPath()%>/manageEmp.os';">지원자 관리</div>
     </div>
     <div class="space"></div>
     <div>
         <span>인재 관리</span>
+        <div class="osLink" onclick="location.href='<%=request.getContextPath()%>/manageEmp.os';">지원자 관리</div>
         <div class="osLink" onclick="location.href='<%=request.getContextPath()%>/searchResume.os';">이력서 검색</div>
-        <div class="osLink" onclick="location.href='<%=request.getContextPath()%>/';">스크랩 이력서</div>
     </div>
     <div class="space"></div>
     <div>
         <span>기업 상품</span>
-        <div class="osLink" onclick="location.href='<%=request.getContextPath()%>/';">공고 상품</div>
-        <div class="osLink" onclick="location.href='<%=request.getContextPath()%>/';">공고 상품</div>
+        <div class="osLink" onclick="location.href='<%=request.getContextPath()%>/incruitProduct.os';">공고 상품</div>
     </div>
     <div class="space"></div>
     <div>
