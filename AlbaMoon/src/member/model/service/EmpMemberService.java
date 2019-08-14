@@ -1,6 +1,6 @@
 package member.model.service;
 
-public class PersonMemberService {
+public class EmpMemberService {
 	
 	
 
