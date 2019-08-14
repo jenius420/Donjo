@@ -40,7 +40,7 @@ public class MemWarningServlet extends HttpServlet {
 		request.setAttribute("empList", empList);
 		request.setAttribute("ownerList", ownerList);
 		
-		request.getRequestDispatcher("/views/empService/MemWarning.jsp").forward(request, response);
+		request.getRequestDispatcher("/views/adminService/MemWarning.jsp").forward(request, response);
 	}
 
 	/**

@@ -39,7 +39,7 @@ public class MemListServlet extends HttpServlet {
 		request.setAttribute("empList", empList);
 		request.setAttribute("ownerList", ownerList);
 		
-		request.getRequestDispatcher("/views/empService/MemList.jsp").forward(request, response);
+		request.getRequestDispatcher("/views/adminService/MemList.jsp").forward(request, response);
 		
 		
 		
