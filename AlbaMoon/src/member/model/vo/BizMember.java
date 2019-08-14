@@ -1,4 +1,4 @@
-package bizMember.vo;
+package member.model.vo;
 
 public class BizMember {
 	

@@ -92,7 +92,7 @@
         
         function joinMember(){
         	
-            location.href="<%= request.getContextPath() %>/selectMemberJoin.me";
+            location.href="<%= request.getContextPath() %>/selectJoinMember.me";
         	
         }
         
