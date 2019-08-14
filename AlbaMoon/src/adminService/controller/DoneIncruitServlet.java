@@ -36,7 +36,7 @@ public class DoneIncruitServlet extends HttpServlet {
 		
 		request.setAttribute("list", list);
 		
-		request.getRequestDispatcher("/views/empService/DoneIncruit.jsp").forward(request, response);
+		request.getRequestDispatcher("/views/adminService/DoneIncruit.jsp").forward(request, response);
 	}
 
 	/**

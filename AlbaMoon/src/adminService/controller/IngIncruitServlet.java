@@ -36,7 +36,7 @@ public class IngIncruitServlet extends HttpServlet {
 		
 		request.setAttribute("list", list);
 		
-		request.getRequestDispatcher("/views/empService/IngIncruit.jsp").forward(request, response);
+		request.getRequestDispatcher("/views/adminService/IngIncruit.jsp").forward(request, response);
 	}
 
 	/**

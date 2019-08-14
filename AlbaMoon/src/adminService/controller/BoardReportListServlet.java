@@ -9,21 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import adminService.model.service.ManageMemService;
-import emp.model.vo.Emp;
-import owner.model.vo.Owner;
+import adminService.model.service.ManageBoardService;
+import board.model.vo.Board;
 
 /**
- * Servlet implementation class MemListServlet
+ * Servlet implementation class BoardWarningListServlet
  */
-@WebServlet("/memList.as")
-public class MemListServlet extends HttpServlet {
+@WebServlet("/boardWarningList.as")
+public class BoardReportListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemListServlet() {
+    public BoardReportListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,17 +32,11 @@ public class MemListServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		ArrayList<Emp> empList = new ManageMemService().selectEmpList();
-		ArrayList<Owner> ownerList = new ManageMemService().selectOwnerList();
+		ArrayList<Board> list = new ManageBoardService().selectBoardReportList();
 		
-		request.setAttribute("empList", empList);
-		request.setAttribute("ownerList", ownerList);
+		request.setAttribute("list", list);
 		
-		request.getRequestDispatcher("/views/adminService/MemList.jsp").forward(request, response);
-		
-		
-		
-		
+		request.getRequestDispatcher("/views/adminService/BoardReportList.jsp").forward(request, response);
 		
 	}
 

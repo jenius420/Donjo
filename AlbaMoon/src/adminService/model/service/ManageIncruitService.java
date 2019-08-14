@@ -9,6 +9,7 @@ import adminService.model.dao.ManageIncruitDao;
 import adminService.model.dao.ManageMemDao;
 import owner.model.vo.Owner;
 import ownerService.model.vo.Incruit;
+import ownerService.model.vo.IncruitProduct;
 
 public class ManageIncruitService {
 	
@@ -29,6 +30,18 @@ public class ManageIncruitService {
 		Connection conn = getConnection();
 
 		ArrayList<Incruit> list = new ManageIncruitDao().selectDoneIncruitList(conn);
+
+		close(conn);
+
+		return list;
+		
+	}
+	
+	public ArrayList<IncruitProduct>  selectIncruitProduct() {
+		
+		Connection conn = getConnection();
+
+		ArrayList<IncruitProduct> list = new ManageIncruitDao().selectIncruitProduct(conn);
 
 		close(conn);
 

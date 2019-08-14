@@ -63,14 +63,14 @@
 		사진
 		
 		하고싶은말
-		<textarea name="comment" id="comment" cols="30" rows="10"></textarea>
+		<textarea name="comment" id="comment" cols="30" rows="10" style="resize:none;"></textarea>
 		
-		이력서공개설정 
+		이력서공개설정 	
 		<input type="checkbox" name="openSet" id="openSet"  value="Y" checked>
 		
 		<input type="submit" value="저장완료">
 		<input type="reset" value="초기화">
-		<button onclick="history.back();">이전 화면으로</button>
+		<button type="button" onclick="javascript:history.back();">이전 화면으로</button>
 
 	</form>
 

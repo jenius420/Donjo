@@ -13,6 +13,7 @@ import java.util.Properties;
 
 import emp.model.vo.Emp;
 import ownerService.model.vo.Incruit;
+import ownerService.model.vo.IncruitProduct;
 
 public class ManageIncruitDao {
 	
@@ -82,6 +83,41 @@ public class ManageIncruitDao {
 				list.add(new Incruit(
 						//위 메소드랑 동일 컬럼
 									rs.getInt("ENUM"),
+									));
+			}
+			
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return list;
+		
+	}
+	
+	public ArrayList<IncruitProduct> selectIncruitProduct(Connection conn) {
+		
+		ArrayList<IncruitProduct> list = null;	
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = prop.getProperty("selectIncruitProduct");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+
+				list.add(new IncruitProduct(
+									rs.getInt("PCODE"),
+									rs.getString("PTITLE"),
+									rs.getString("PEXPLAIN"),
+									rs.getInt("PPAY")
 									));
 			}
 			
