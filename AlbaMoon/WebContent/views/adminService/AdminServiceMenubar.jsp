@@ -33,22 +33,16 @@
 <div class="esMenubar">
     <div>
         <span>회원 관리</span>
-       	<div class="esLink" onclick="location.href='<%=request.getContextPath()%>/';">회원 리스트</div>
-        <div class="esLink" onclick="location.href='<%=request.getContextPath()%>/';">경고 관리</div>
+       	<div class="esLink" onclick="location.href='<%=request.getContextPath()%>/memList.as';">회원 리스트</div>
+        <div class="esLink" onclick="location.href='<%=request.getContextPath()%>/memWarning.as';">경고 관리</div>
     </div>
     <div class="space"></div>
     <div>
         <span>공고 관리</span>
         <ul>
-            <div class="esLink" onclick="location.href='<%=request.getContextPath()%>/';">진행중 공고</div>
-            <div class="esLink" onclick="location.href='<%=request.getContextPath()%>/';">지난 공고</div>
-        </ul>
-    </div>
-    <div class="space"></div>
-    <div>
-        <span>상품 관리</span>
-        <ul>
-            <div class="esLink" onclick="location.href='<%=request.getContextPath()%>/';">공고 상품</div>
+            <div class="esLink" onclick="location.href='<%=request.getContextPath()%>/ingIncruit.as';">진행중 공고</div>
+            <div class="esLink" onclick="location.href='<%=request.getContextPath()%>/doneIncruit.as';">지난 공고</div>
+            <div class="esLink" onclick="location.href='<%=request.getContextPath()%>/manageProduct';">공고 상품 관리</div>
         </ul>
     </div>
     <div class="space"></div>
