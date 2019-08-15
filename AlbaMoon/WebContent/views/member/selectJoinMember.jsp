@@ -70,7 +70,7 @@
 
     <script>
         function personJoinMember(){
-        	location.href="<%= request.getContextPath() %>/personJoinMember.me";
+        	location.href="<%= request.getContextPath() %>/empJoinMember.me";
         }
 
         function bizJoinMember(){
