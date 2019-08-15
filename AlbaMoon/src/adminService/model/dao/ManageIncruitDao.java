@@ -48,7 +48,7 @@ public class ManageIncruitDao {
 			if(rs.next()) {
 
 				list.add(new Incruit(
-						//가져올 컬럼 넣기
+						//가져올 컬럼 넣dfd기
 									rs.getInt("ENUM"),
 									));
 			}
