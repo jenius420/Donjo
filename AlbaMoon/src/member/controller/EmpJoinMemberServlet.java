@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class PersonJoinMemberServlet
  */
-@WebServlet("/empJoinMember.me")
+@WebServlet("/empJoin.me")
 public class EmpJoinMemberServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -27,7 +27,16 @@ public class EmpJoinMemberServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		request.getRequestDispatcher("views/member/empJoinMember.jsp").forward(request, response);
+		request.setCharacterEncoding("UTF-8");
+		
+		String eId = request.getParameter("eId");
+		String ePwd = request.getParameter("ePwd");
+		String eName = request.getParameter("eName");
+		String ecNum = request.getParameter("ecNum");
+		String email = request.getParameter("email");
+		String 
+		
+		
 	}
 
 	/**
