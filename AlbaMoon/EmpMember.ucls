@@ -1,18 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.2.3" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
-  <class id="1" language="java" name="member.model.vo.EmpMember" project="AlbaMoon" 
-    file="/AlbaMoon/src/member/model/vo/EmpMember.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="1150" width="588" x="-15" y="-171"/>    
+  <class id="1" language="java" name="member.controller.selectJoinMemberServlet" project="AlbaMoon" 
+    file="/AlbaMoon/src/member/controller/selectJoinMemberServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="656" y="-80"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="2" language="java" name="member.model.service.EmpMemberService" project="AlbaMoon" 
-    file="/AlbaMoon/src/member/model/service/EmpMemberService.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1107" y="49"/>    
+  <class id="2" language="java" name="member.controller.EmpJoinMemberServlet" project="AlbaMoon" 
+    file="/AlbaMoon/src/member/controller/EmpJoinMemberServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="657" y="75"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="member.controller.FindPwdServlet" project="AlbaMoon" 
+    file="/AlbaMoon/src/member/controller/FindPwdServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="660" y="233"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="member.controller.FindIdServlet" project="AlbaMoon" 
+    file="/AlbaMoon/src/member/controller/FindIdServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="661" y="391"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="member.model.vo.EmpMember" project="AlbaMoon" 
+    file="/AlbaMoon/src/member/model/vo/EmpMember.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="1150" width="588" x="-168" y="-152"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
