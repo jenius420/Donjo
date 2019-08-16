@@ -68,6 +68,8 @@
 		이력서공개설정 	
 		<input type="checkbox" name="openSet" id="openSet"  value="Y" checked>
 		
+		<input type="hidden" value="보여주면 안 되는데 같이 넘겨야 하는 경우">
+		
 		<input type="submit" value="저장완료">
 		<input type="reset" value="초기화">
 		<button type="button" onclick="javascript:history.back();">이전 화면으로</button>

@@ -55,6 +55,8 @@ public class SubmitResumeServlet extends HttpServlet {
 		
 		if(result > 0) {
 			request.setAttribute("msg", "이력서를 성공적으로 등록했습니다");	
+			//response.sendRedirect("manageResume.es"); 이런식으로 서블렛을 바로 부를 수도 있고
+			//response.sendRedirect("manageResume.es?empNum="+empNum); 해당서블렛에서 사용될 변수가 있으면 이렇게 추가하면 됨
 		}else {
 			request.setAttribute("msg", "이력서 등록에 실패했습니다. 다시 시도해주세요");
 		}
