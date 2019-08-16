@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import adminService.model.dao.ManageBoardDao;
 import adminService.model.dao.ManageMemDao;
 import board.model.vo.Board;
+import board.model.vo.Comment;
 import owner.model.vo.Owner;
 
 public class ManageBoardService {

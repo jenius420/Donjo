@@ -37,6 +37,17 @@ public class ResumeService {
 		return result;
 	}
 	
+	public ArrayList<Resume> selectResumeList(int memNum) {
+
+		Connection conn = getConnection();
+
+		ArrayList<Resume> list = new ResumeDao().selectResumeList(conn, memNum);
+
+		close(conn);
+
+		return list;
+	}
+	
 	
 
 }

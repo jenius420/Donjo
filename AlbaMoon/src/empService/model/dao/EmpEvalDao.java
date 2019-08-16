@@ -99,5 +99,40 @@ public class EmpEvalDao {
 		return list;
 		
 	}
+	
+	public int MakeEmpEval(Connection conn, EmpEvaluation empEval) {
+		
+		int result = 0;
+
+		PreparedStatement pstmt = null;
+
+		String sql = prop.getProperty("MakeEmpEval");
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, resume.getResumeTitle());
+			pstmt.setInt(2, resume.getEmpNum());
+			pstmt.setString(3, resume.getDistrict());
+			pstmt.setString(4, resume.getType());
+			pstmt.setString(5, resume.getComment());
+			pstmt.setString(6, resume.사진경로);
+			pstmt.setString(7, resume.getDesireForm());
+			pstmt.setInt(8, resume.getDesireIncome());
+			pstmt.setString(9, resume.getOpenSet());
+			pstmt.setString(10, resume.getEdu());
+			
+
+			result = pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+
+		return result;
+		
+	}
 
 }

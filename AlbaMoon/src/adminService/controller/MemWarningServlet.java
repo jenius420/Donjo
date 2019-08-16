@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import adminService.model.service.ManageMemService;
 import emp.model.vo.Emp;
-import member.model.vo.PersonMember;
 import owner.model.vo.Owner;
 
 /**
