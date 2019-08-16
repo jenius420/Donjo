@@ -39,11 +39,11 @@ public class ResumeService {
 		return result;
 	}
 	
-	public ArrayList<Resume> selectResumeList(int memNum) {
+	public ArrayList<Resume> selectResumeList(int empNum) {
 
 		Connection conn = getConnection();
 
-		ArrayList<Resume> list = new ResumeDao().selectResumeList(conn, memNum);
+		ArrayList<Resume> list = new ResumeDao().selectResumeList(conn, empNum);
 
 		close(conn);
 
@@ -59,6 +59,20 @@ public class ResumeService {
 		close(conn);
 
 		return list;
+	}
+	
+	public ArrayList<Incruit> selectSuitableIncruit(int rNum) {
+		
+		Connection conn = getConnection();
+
+		Resume resume = new ResumeDao().choiceResume(conn, rNum);
+		
+		ArrayList<Incruit> list = new ResumeDao().selectSuitableIncruit(conn, resume);
+
+		close(conn);
+
+		return list;
+		
 	}
 	
 	

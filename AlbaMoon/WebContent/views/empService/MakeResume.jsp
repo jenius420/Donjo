@@ -1,23 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="EUC-KR"
-	import="emp.model.vo.Emp"
-%>
+	pageEncoding="EUC-KR"%>
 <%@ include file="../empService/EmpServiceMenubar.jsp"%>
 <%	
-	Emp emp = (Emp) session.getAttribute("loginUser");
-	Boolean accessAuth = true;
-	String eName = "";
-	int phone = 0;
-	String address = "";
-	String email = "";
-	if(emp == null){
-		accessAuth = false;
-	}else{
-		eName = emp.geteName();
-		phone = emp.getPhone();
-		address = emp.getAddress();
-		email = emp.getEmail();
-	}
+	String eName = emp.geteName();
+	int phone = emp.getPhone();
+	String address = emp.getAddress();
+	String email = emp.getEmail();
 %>
 <!DOCTYPE html>
 <html>
@@ -27,7 +15,7 @@
 </head>
 <body>
 
-	<form id="resumeForm" action="<%=request.getContextPath()%>/resume.es" method="POST">
+	<form id="resumeForm" action="<%=request.getContextPath()%>/submitResume.es" method="POST">
 		
 		제목 <input type="text" name="resumeTitle" id="resumeTitle"
 			placeholder="이력서 제목">
@@ -70,7 +58,7 @@
 		
 		<input type="hidden" value="보여주면 안 되는데 같이 넘겨야 하는 경우">
 		
-		<input type="submit" value="저장완료">
+		<input type="submit" value="저장완료" validation 작성해야함>
 		<input type="reset" value="초기화">
 		<button type="button" onclick="javascript:history.back();">이전 화면으로</button>
 

@@ -10,6 +10,7 @@ import emp.model.vo.Emp;
 
 import empService.model.dao.EmpServiceDao;
 import empService.model.vo.ApplicationState;
+import owner.model.vo.Owner;
 
 public class EmpServiceService {
 
@@ -29,15 +30,14 @@ public class EmpServiceService {
 		return list;
 	}
 	
-	public ArrayList<InterestOwner> selectInterestOwner(String empNum){
+	public ArrayList<Owner> selectInterestOwner(int empNum){
 		
 		Connection conn = getConnection();
 
 		int[] listNum = new EmpServiceDao().selectInterestOwnerNum(conn, empNum);
-		ArrayList<InterestOwner> iList = new EmpServiceDao().selectInterestOwner(conn, listNum);
-		// InterestOwner 타입을 따로 쓸지 아니면 사업자vo 통일할지 결정해야됨
+		ArrayList<Owner> iList = new EmpServiceDao().selectInterestOwner(conn, listNum);
 		
-		//관심기업에 해당하는 공고들 가져오는 DAO
+		
 
 		close(conn);
 

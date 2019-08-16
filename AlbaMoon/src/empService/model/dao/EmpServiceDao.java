@@ -14,6 +14,8 @@ import empService.model.vo.ApplicationState;
 import empService.model.vo.EmpEvaluation;
 import empService.model.vo.EmpEvaluationBefore;
 import empService.model.vo.Resume;
+import owner.model.vo.Owner;
+
 import static common.JDBCTemplate.*;
 
 public class EmpServiceDao {
@@ -40,6 +42,7 @@ public class EmpServiceDao {
 		ResultSet rs = null;
 		
 		String sql = prop.getProperty("selectApplicationState");
+		// 지원일 순으로 정렬. 지원취소한거는 포함 안 됨
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -70,7 +73,7 @@ public class EmpServiceDao {
 		
 	}
 	
-	public int[] selectInterestOwnerNum(Connection conn, String empNum){
+	public int[] selectInterestOwnerNum(Connection conn, int empNum){
 		
 		int[] list = new int[5];	
 		PreparedStatement pstmt = null;
@@ -80,7 +83,7 @@ public class EmpServiceDao {
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, empNum);
+			pstmt.setInt(1, empNum);
 			
 			rs = pstmt.executeQuery();
 			
@@ -105,9 +108,9 @@ public class EmpServiceDao {
 		
 	}
 	
-	public ArrayList<InterestOwner> selectInterestOwner(Connection conn, int[] listNum){
+	public ArrayList<Owner> selectInterestOwner(Connection conn, int[] listNum){
 		
-		ArrayList<InterestOwner> list = null;	
+		ArrayList<Owner> list = null;	
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		

@@ -3,28 +3,27 @@ package empService.controller;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import emp.model.vo.Emp;
-import empService.model.service.EmpServiceService;
-import owner.model.vo.Owner;
+import empService.model.service.ResumeService;
+import empService.model.vo.Resume;
+import ownerService.model.vo.Incruit;
 
 /**
- * Servlet implementation class InterestOwnerManageServlet
+ * Servlet implementation class ChoiceResumeServlet
  */
-@WebServlet("/interestOwner.es")
-public class InterestOwnerManageServlet extends HttpServlet {
+@WebServlet("/selectSuitableIncruit.es")
+public class SelectSuitableIncruitServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public InterestOwnerManageServlet() {
+    public SelectSuitableIncruitServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,14 +33,12 @@ public class InterestOwnerManageServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		Emp emp = (Emp)request.getSession().getAttribute("loginUser");
+		int rNum = Integer.parseInt(request.getParameter("rNum"));
 		
-		ArrayList<Owner> list = new EmpServiceService().selectInterestOwner(emp.getEmpNum());
+		ArrayList<Incruit> list = new ResumeService().selectSuitableIncruit(rNum);
 		
-		//관심기업에 해당하는 공고들 가져오는 DAO
+		// 팝업에서 결정된 list를 어떻게 원래 창으로 가져올지?
 		
-		RequestDispatcher view = request.getRequestDispatcher("/views/empService/InterestOwnerManage.jsp");
-		view.forward(request, response);
 	}
 
 	/**
