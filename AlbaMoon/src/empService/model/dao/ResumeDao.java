@@ -13,6 +13,8 @@ import java.util.Properties;
 
 import empService.model.vo.ApplicationState;
 import empService.model.vo.Resume;
+import ownerService.model.vo.Filter;
+import ownerService.model.vo.Incruit;
 
 public class ResumeDao {
 	
@@ -98,6 +100,43 @@ public class ResumeDao {
 		}
 		
 		return list;
+	}
+	
+	public ArrayList<Incruit> selectSuitableRecruitList(Connection conn, Filter filter) {
+		
+		ArrayList<Incruit> list = null;	
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = prop.getProperty("selectApplicationState");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, filter);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				list.add(new Incruit(
+									rs.getInt("APPLYNUM"),
+									rs.getInt("ENUM"),
+									rs.getInt("WNUM"),
+									rs.getString("WTITLE"),
+									rs.getString("OPNAME"),
+									rs.getDate("APPLYDATE"),
+									rs.getString("PASSORFAIL")
+									));
+			}
+			
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return list;
+		
 	}
 
 }
