@@ -36,6 +36,48 @@ public class ManageBoardService {
 
 		return list;
 		
+	}
+	
+	public int deleteBoard(int tNum) {
+		
+		Connection conn = getConnection();
+		
+		int result = 0;
+		
+		result = new ManageBoardDao().deleteBoard(conn, tNum);
+
+		if (result > 0) {
+			commit(conn);
+
+		} else {
+			rollback(conn);
+		}
+
+		close(conn);
+
+		return result;
+		
+	}
+	
+	
+	public int deleteComment(int deleteComment) {
+		
+		Connection conn = getConnection();
+		
+		int result = 0;
+		
+		result = new ManageBoardDao().deleteComment(conn, deleteComment);
+
+		if (result > 0) {
+			commit(conn);
+
+		} else {
+			rollback(conn);
+		}
+
+		close(conn);
+
+		return result;
 		
 	}
 

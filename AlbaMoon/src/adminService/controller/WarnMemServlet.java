@@ -29,7 +29,7 @@ public class WarnMemServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int flag = Integer.parseInt(request.getParameter("flag"));
+		int flag = Integer.parseInt(request.getParameter("flag")); // 1구직자 2사업자
 		String[] memArr = request.getParameterValues("memArr");
 		
 		int count = 0;

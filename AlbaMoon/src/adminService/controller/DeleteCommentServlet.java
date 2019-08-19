@@ -1,8 +1,6 @@
 package adminService.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,20 +8,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import adminService.model.service.ManageBoardService;
-import board.model.vo.Board;
-import board.model.vo.Comment;
 
 /**
- * Servlet implementation class CommentWarningListServlet
+ * Servlet implementation class DeleteCommentServlet
  */
-@WebServlet("/commentReportList.as")
-public class CommentReportListServlet extends HttpServlet {
+@WebServlet("/deleteComment.as")
+public class DeleteCommentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CommentReportListServlet() {
+    public DeleteCommentServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,12 +28,14 @@ public class CommentReportListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		ArrayList<Comment> list = new ManageBoardService().selectCommentReportList();
 		
-		request.setAttribute("list", list);
+		int commentNum = Integer.parseInt(request.getParameter("commentNum"));
 		
-		request.getRequestDispatcher("/views/adminService/CommentReportList.jsp").forward(request, response);
+		int result = new ManageBoardService().deleteComment(commentNum);
+		
+//		비동기처리
+//		request.getRequestDispatcher("/views/adminService/DeleteComment.jsp").forward(request, response);
+		
 	}
 
 	/**
