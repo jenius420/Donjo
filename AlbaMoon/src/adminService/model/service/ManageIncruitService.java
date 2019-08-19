@@ -48,5 +48,17 @@ public class ManageIncruitService {
 		return list;
 		
 	}
+	
+	public Incruit watchingIncruit(int wNum) {
+		
+		Connection conn = getConnection();
+
+		ArrayList<Incruit> incruit = new ManageIncruitDao().watchingIncruit(conn, wNum);
+
+		close(conn);
+
+		return incruit;
+		
+	}
 
 }

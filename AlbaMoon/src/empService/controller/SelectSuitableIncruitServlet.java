@@ -1,4 +1,4 @@
-package adminService.controller;
+package empService.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -9,22 +9,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import adminService.model.service.ManageMemService;
-import emp.model.vo.Emp;
-import member.model.vo.PersonMember;
-import owner.model.vo.Owner;
+import empService.model.service.ResumeService;
+import empService.model.vo.Resume;
+import ownerService.model.vo.Incruit;
 
 /**
- * Servlet implementation class MemWarningServlet
+ * Servlet implementation class ChoiceResumeServlet
  */
-@WebServlet("/memWarning.as")
-public class MemWarningServlet extends HttpServlet {
+@WebServlet("/selectSuitableIncruit.es")
+public class SelectSuitableIncruitServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemWarningServlet() {
+    public SelectSuitableIncruitServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,14 +32,13 @@ public class MemWarningServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		ArrayList<Emp> empList = new ManageMemService().selectEmpList();
-		ArrayList<Owner> ownerList = new ManageMemService().selectOwnerList();
 		
-		request.setAttribute("empList", empList);
-		request.setAttribute("ownerList", ownerList);
+		int rNum = Integer.parseInt(request.getParameter("rNum"));
 		
-		request.getRequestDispatcher("/views/adminService/MemWarning.jsp").forward(request, response);
+		ArrayList<Incruit> list = new ResumeService().selectSuitableIncruit(rNum);
+		
+		// 팝업에서 결정된 list를 어떻게 원래 창으로 가져올지?
+		
 	}
 
 	/**

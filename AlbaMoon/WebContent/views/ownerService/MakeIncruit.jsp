@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
-    import="owner.model.vo.OwnerInfo"%>
+    import="member.model.vo.OwnerMember"%>
 <%@ include file="../ownerService/OwnerServiceMenubar.jsp"%>
 <%	
-	OwnerInfo owner= (OwnerInfo) session.getAttribute("loginUser");
+	OwnerMember owner= (OwnerMember) session.getAttribute("loginUser");
 	Boolean accessAuth = true;
 	String opName = ""; // 업체명
 	String type = ""; // 업직종

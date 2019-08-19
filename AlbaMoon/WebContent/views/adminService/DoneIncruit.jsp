@@ -8,5 +8,7 @@
 </head>
 <body>
 
+	선택 시 해당 공고 불러옴 watchingIncruit.as
+
 </body>
 </html>

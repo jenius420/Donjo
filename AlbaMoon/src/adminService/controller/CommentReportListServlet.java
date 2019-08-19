@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import adminService.model.service.ManageBoardService;
 import board.model.vo.Board;
+import board.model.vo.Comment;
 
 /**
  * Servlet implementation class CommentWarningListServlet

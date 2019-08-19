@@ -33,7 +33,7 @@ public class CreateEmpEvalServlet extends HttpServlet {
 		
 		String applyNum = request.getParameter("applyNum");
 		
-		알바후기 작성 경로에 대해서는 고민해야함
+		//알바후기 작성 경로에 대해서는 고민해야함
 		
 	}
 

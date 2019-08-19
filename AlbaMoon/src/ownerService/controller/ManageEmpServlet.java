@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import emp.model.vo.Emp;
 import owner.model.vo.Owner;
 import ownerService.model.service.IncruitService;
+import ownerService.model.vo.Appliant;
 import ownerService.model.vo.Incruit;
 
 /**
@@ -36,7 +37,7 @@ public class ManageEmpServlet extends HttpServlet {
 		
 		Owner owner = (Owner)request.getSession().getAttribute("loginUser");
 		
-		ArrayList<??> list = new IncruitService().selectManageEmp(owner.getoNum());
+		ArrayList<Appliant> list = new IncruitService().selectManageEmp(owner.getoNum());
 		
 		request.setAttribute("manageEmpList", list); // 컬렉션 넘기는거는 게시판 배우고 나서 다시 보기
 		

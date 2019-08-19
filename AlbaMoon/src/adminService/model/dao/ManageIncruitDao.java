@@ -131,5 +131,42 @@ public class ManageIncruitDao {
 		return list;
 		
 	}
+	
+	public Incruit watchingIncruit(Connection conn, int wNum) {
+		
+		Incruit incruit = null;	
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = prop.getProperty("watchingIncruit");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, wNum);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+
+				incruit = new Incruit(
+									rs.getInt("PCODE"),
+									rs.getString("PTITLE"),
+									rs.getString("PEXPLAIN"),
+									rs.getInt("PPAY")
+									));
+			}
+			
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return incruit;
+		
+	}
 
 }

@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import empService.model.dao.ResumeDao;
 import empService.model.vo.ApplicationState;
 import empService.model.vo.Resume;
+import ownerService.model.vo.Filter;
+import ownerService.model.vo.Incruit;
 
 public class ResumeService {
 
@@ -35,6 +37,42 @@ public class ResumeService {
 		close(conn);
 
 		return result;
+	}
+	
+	public ArrayList<Resume> selectResumeList(int empNum) {
+
+		Connection conn = getConnection();
+
+		ArrayList<Resume> list = new ResumeDao().selectResumeList(conn, empNum);
+
+		close(conn);
+
+		return list;
+	}
+	
+	public ArrayList<Incruit> selectSuitableRecruitList(Filter filter) {
+
+		Connection conn = getConnection();
+
+		ArrayList<Incruit> list = new ResumeDao().selectSuitableRecruitList(conn, filter);
+
+		close(conn);
+
+		return list;
+	}
+	
+	public ArrayList<Incruit> selectSuitableIncruit(int rNum) {
+		
+		Connection conn = getConnection();
+
+		Resume resume = new ResumeDao().choiceResume(conn, rNum);
+		
+		ArrayList<Incruit> list = new ResumeDao().selectSuitableIncruit(conn, resume);
+
+		close(conn);
+
+		return list;
+		
 	}
 	
 	

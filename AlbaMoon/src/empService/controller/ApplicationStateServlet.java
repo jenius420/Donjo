@@ -34,15 +34,14 @@ public class ApplicationStateServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.setCharacterEncoding("UTF-8");
+		Emp emp = (Emp)request.getSession().getAttribute("loginUser");
 		
-//		지원자모음 테이블에서 세션유저 id로 매칭되는 row들을 모아옴
-		Emp emp = (Emp)request.getSession().getAttribute("emp");
 		ArrayList<ApplicationState> list = new EmpServiceService().selectApplicationState(emp.getEmpNum());
 		
 		if(list.size() > 0) {
 			request.setAttribute("applicationStatelist", list);
 		}
+		//else.. list null처리를 화면에서 해야하는지?
 		
 		RequestDispatcher view = request.getRequestDispatcher("/views/empService/ApplicationState.jsp");
 		view.forward(request, response);

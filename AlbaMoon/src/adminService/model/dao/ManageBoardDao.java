@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import board.model.vo.Board;
+import board.model.vo.Comment;
 import owner.model.vo.Owner;
 import ownerService.model.vo.Incruit;
 
@@ -90,7 +91,7 @@ public class ManageBoardDao {
 			if(rs.next()) {
 				// 댓글은 신고없는지?
 				list.add(new Comment(
-									rs.getInt("TNUM"),
+									rs.getInt("TNUM")
 								
 									));
 			}
