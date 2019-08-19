@@ -34,6 +34,7 @@ public class IncruitService {
 		
 	}
 	
+	
 	public ArrayList<Incruit> selectIncruitList(int oNum) {
 		
 		Connection conn = getConnection();
@@ -117,6 +118,18 @@ public class IncruitService {
 		close(conn);
 
 		return resume;
+		
+	}
+	
+	public int checkResume(int rNum) {
+		
+		Connection conn = getConnection();
+		
+		int result = new IncruitDao().checkResume(conn, rNum);
+		
+		close(conn);
+
+		return result;
 		
 	}
 

@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 import adminService.model.dao.ManageMemDao;
 import emp.model.vo.Emp;
-import empService.model.dao.ResumeDao;
 
 import static common.JDBCTemplate.*;
 import owner.model.vo.Owner;
@@ -36,42 +35,111 @@ public class ManageMemService {
 		
 	}
 	
-	public int warnMem(int memNum) {
+	public int warnEmp(String[] memArr) {
 		
 		Connection conn = getConnection();
-
-		int result = new ManageMemDao().warnMem(conn, memNum);
-
-		if (result > 0) {
-			commit(conn);
-
-		} else {
-			rollback(conn);
+		
+		int count = 0;
+		int result = 0;
+		
+		for(int i=0; i<memArr.length; i++) {
+			
+			result = new ManageMemDao().warnEmp(conn, Integer.parseInt(memArr[i]));
+	
+			if (result > 0) {
+				commit(conn);
+				count++;
+	
+			} else {
+				rollback(conn);
+			}
 		}
 
 		close(conn);
 
-		return result;
+		return count;
 		
 	}
 	
-	public int deleteMem(int memNum) {
+	public int warnOwner(String[] memArr) {
 		
 		Connection conn = getConnection();
-
-		int result = new ManageMemDao().deleteMem(conn, memNum);
-
-		if (result > 0) {
-			commit(conn);
-
-		} else {
-			rollback(conn);
+		
+		int count = 0;
+		int result = 0;
+		
+		for(int i=0; i<memArr.length; i++) {
+			
+			result = new ManageMemDao().warnOwner(conn, Integer.parseInt(memArr[i]));
+	
+			if (result > 0) {
+				commit(conn);
+				count++;
+	
+			} else {
+				rollback(conn);
+			}
 		}
 
 		close(conn);
 
-		return result;
+		return count;
 		
 	}
+	
+	public int deleteEmp(String[] memArr) {
+		
+		Connection conn = getConnection();
+		
+		int count = 0;
+		int result = 0;
+		
+		for(int i=0; i<memArr.length; i++) {
+			
+			result = new ManageMemDao().deleteEmp(conn, Integer.parseInt(memArr[i]));
+	
+			if (result > 0) {
+				commit(conn);
+				count++;
+	
+			} else {
+				rollback(conn);
+			}
+		}
+
+		close(conn);
+
+		return count;
+		
+	}
+	
+	public int deleteOwner(String[] memArr) {
+		
+		Connection conn = getConnection();
+		
+		int count = 0;
+		int result = 0;
+		
+		for(int i=0; i<memArr.length; i++) {
+			
+			result = new ManageMemDao().deleteOwner(conn, Integer.parseInt(memArr[i]));
+	
+			if (result > 0) {
+				commit(conn);
+				count++;
+	
+			} else {
+				rollback(conn);
+			}
+		}
+
+		close(conn);
+
+		return count;
+		
+	}
+	
+	
+
 
 }

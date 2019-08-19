@@ -9,6 +9,8 @@
 <body>
 
 구직자/사업자  탭으로 구분하여 출력
+경고 warnMem.as(구직자만 경고 가능한지 결정해야함)
+탈퇴 deleteMem.as
 
 </body>
 </html>

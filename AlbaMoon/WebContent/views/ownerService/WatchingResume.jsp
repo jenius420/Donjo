@@ -10,6 +10,7 @@
 
 	기본적으로 이력서 등록 페이지랑 같게 구성
 	화면 하단에 채용/반려 가능(value P/F + applyNum) passYn.os 호출
+	채용/반려 취소(CHECK로 수정) checkResume.os 호출
 	
 	
 	

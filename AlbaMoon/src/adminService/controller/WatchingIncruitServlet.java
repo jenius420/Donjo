@@ -7,19 +7,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import adminService.model.service.ManageMemService;
+import adminService.model.service.ManageIncruitService;
+import ownerService.model.vo.Incruit;
 
 /**
- * Servlet implementation class DeleteMemServlet
+ * Servlet implementation class WatchingIncruitServlet
  */
-@WebServlet("deleteMem.as")
-public class DeleteMemServlet extends HttpServlet {
+@WebServlet("/watchingIncruit.as")
+public class WatchingIncruitServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DeleteMemServlet() {
+    public WatchingIncruitServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,19 +30,13 @@ public class DeleteMemServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int flag = Integer.parseInt(request.getParameter("flag"));
-		String[] memArr = request.getParameterValues("memArr");
+		int wNum = Integer.parseInt(request.getParameter("wNum"));
 		
-		int count = 0;
+		Incruit incruit = new ManageIncruitService().watchingIncruit(wNum);
 		
-		if(flag == 1) {
-			count = new ManageMemService().deleteEmp(memArr);
-		}else {
-			count = new ManageMemService().deleteOwner(memArr); 
-		}
+		request.setAttribute("incruit", incruit);
 		
-		//비동기 처리
-		
+		request.getRequestDispatcher("/views/adminService/WatchingIncruit.jsp").forward(request, response);
 		
 	}
 

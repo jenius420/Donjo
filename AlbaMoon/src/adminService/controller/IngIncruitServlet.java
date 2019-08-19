@@ -37,6 +37,7 @@ public class IngIncruitServlet extends HttpServlet {
 		request.setAttribute("list", list);
 		
 		request.getRequestDispatcher("/views/adminService/IngIncruit.jsp").forward(request, response);
+		//채용이 되도 마감은 아님
 	}
 
 	/**

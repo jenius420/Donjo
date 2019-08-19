@@ -34,10 +34,12 @@ public class WatchingResumeServlet extends HttpServlet {
 		int rNum = (int)request.getAttribute("rNum");
 		
 		Resume resume = new IncruitService().selectResume(rNum);
+		int result = new IncruitService().checkResume(rNum);
 		
 		request.setAttribute("resume", resume);
 		
-		request.getRequestDispatcher("/views/ownerService/SelectResume.jsp").forward(request, response);
+		
+		request.getRequestDispatcher("/views/ownerService/WatchingResume.jsp").forward(request, response);
 		
 		
 	}

@@ -107,28 +107,18 @@ public class ManageMemDao {
 		return list;
 	}
 
-	public int warnMem(Connection conn, int memNum) {
+	public int warnEmp(Connection conn, int eNum) {
 		
 		int result = 0;
 
 		PreparedStatement pstmt = null;
 
-		String sql = prop.getProperty("warnMem");
+		String sql = prop.getProperty("warnEmp");
 
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setString(1, resume.getResumeTitle());
-			pstmt.setInt(2, resume.getEmpNum());
-			pstmt.setString(3, resume.getDistrict());
-			pstmt.setString(4, resume.getType());
-			pstmt.setString(5, resume.getComment());
-			pstmt.setString(6, resume.사진경로);
-			pstmt.setString(7, resume.getDesireForm());
-			pstmt.setInt(8, resume.getDesireIncome());
-			pstmt.setString(9, resume.getOpenSet());
-			pstmt.setString(10, resume.getEdu());
-			
+			pstmt.setInt(1, eNum);
 
 			result = pstmt.executeUpdate();
 
@@ -142,28 +132,18 @@ public class ManageMemDao {
 		
 	}
 	
-	public int deleteMem(Connection conn, int memNum) {
+	public int warnOwner(Connection conn, int oNum) {
 		
 		int result = 0;
 
 		PreparedStatement pstmt = null;
 
-		String sql = prop.getProperty("deleteMem");
+		String sql = prop.getProperty("warnOwner");
 
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setString(1, resume.getResumeTitle());
-			pstmt.setInt(2, resume.getEmpNum());
-			pstmt.setString(3, resume.getDistrict());
-			pstmt.setString(4, resume.getType());
-			pstmt.setString(5, resume.getComment());
-			pstmt.setString(6, resume.사진경로);
-			pstmt.setString(7, resume.getDesireForm());
-			pstmt.setInt(8, resume.getDesireIncome());
-			pstmt.setString(9, resume.getOpenSet());
-			pstmt.setString(10, resume.getEdu());
-			
+			pstmt.setInt(1, oNum);
 
 			result = pstmt.executeUpdate();
 
@@ -176,5 +156,57 @@ public class ManageMemDao {
 		return result;
 		
 	}
+	
+	public int deleteEmp(Connection conn, int eNum) {
+		
+		int result = 0;
+
+		PreparedStatement pstmt = null;
+
+		String sql = prop.getProperty("deleteEmp");
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, eNum);
+
+			result = pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+
+		return result;
+		
+	}
+	
+	public int deleteOwner(Connection conn, int oNum) {
+		
+		int result = 0;
+
+		PreparedStatement pstmt = null;
+
+		String sql = prop.getProperty("deleteOwner");
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, oNum);
+
+			result = pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+
+		return result;
+		
+	}
+	
+	
 	
 }

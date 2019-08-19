@@ -1,29 +1,25 @@
-package adminService.controller;
+package ownerService.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import adminService.model.service.ManageMemService;
-import emp.model.vo.Emp;
-import owner.model.vo.Owner;
+import ownerService.model.service.IncruitService;
 
 /**
- * Servlet implementation class MemWarningServlet
+ * Servlet implementation class CheckResumeServlet
  */
-@WebServlet("/memWarning.as")
-public class MemWarningServlet extends HttpServlet {
+@WebServlet("/checkResume.os")
+public class CheckResumeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemWarningServlet() {
+    public CheckResumeServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,14 +28,19 @@ public class MemWarningServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		int rNum = (int)request.getAttribute("rNum");
+		
+		int result = new IncruitService().checkResume(rNum);
+		
+		if(result > 0) {
+			request.setAttribute("msg", "처리 성공");	
+		}else {
+			request.setAttribute("msg", "처리 실패");
+		}
+		
+		response.sendRedirect("manageEmp.os");
 
-		ArrayList<Emp> empList = new ManageMemService().selectEmpList();
-		ArrayList<Owner> ownerList = new ManageMemService().selectOwnerList();
-		
-		request.setAttribute("empList", empList);
-		request.setAttribute("ownerList", ownerList);
-		
-		request.getRequestDispatcher("/views/adminService/MemWarning.jsp").forward(request, response);
 	}
 
 	/**

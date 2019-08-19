@@ -300,5 +300,31 @@ public class IncruitDao {
 		return resume;
 		
 	}
+	
+	public int checkResume(Connection conn, int rNum) {
+		
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = prop.getProperty("checkResume");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, rNum);
+			
+			rs = pstmt.executeQuery();
+			
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return resume;
+		
+	}
 
 }
