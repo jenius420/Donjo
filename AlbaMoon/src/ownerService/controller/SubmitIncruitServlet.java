@@ -55,7 +55,7 @@ public class SubmitIncruitServlet extends HttpServlet {
 		
 		Incruit incruit = new Incruit(컬럼컬럼);
 		
-		int result = new IncruitService().enrollIncruit(Incruit);
+		int result = new IncruitService().enrollIncruit(incruit);
 		
 		if(result > 0) {
 			request.setAttribute("msg", "공고를 성공적으로 등록했습니다");	
@@ -63,8 +63,9 @@ public class SubmitIncruitServlet extends HttpServlet {
 			request.setAttribute("msg", "공고 등록에 실패했습니다");
 		}
 		
-		RequestDispatcher view = request.getRequestDispatcher("views/ownerService/ManageIncruit.jsp");
-		view.forward(request, response);
+		response.sendRedirect("incruitList.os"); // 작성 완료 후 리스트 페이지로 이동
+//		RequestDispatcher view = request.getRequestDispatcher("views/ownerService/ManageIncruit.jsp");
+//		view.forward(request, response);
 		
 	}
 

@@ -37,12 +37,12 @@ public class SearchResumeListServlet extends HttpServlet {
 		
 		request.setCharacterEncoding("UTF-8");
 		
-		String str = request.getParameter("");
+		String keyword = request.getParameter("keyword"); 
 		
 		Filter filter = new Filter();
 		
 
-		ArrayList<Resume> list = new IncruitService().selectSearchResumeList(filter);
+		ArrayList<Resume> list = new IncruitService().selectSearchResumeList(keyword, filter);
 		
 		request.setAttribute("", list); // 컬렉션 넘기는거는 게시판 배우고 나서 다시 보기
 		

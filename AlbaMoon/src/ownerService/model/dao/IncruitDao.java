@@ -197,17 +197,9 @@ public class IncruitDao {
 		String sql = prop.getProperty("empPassYn");
 
 		try {
-//			pstmt = conn.prepareStatement(sql);
-//			pstmt.setString(1, resume.getResumeTitle());
-//			pstmt.setInt(2, resume.getEmpNum());
-//			pstmt.setString(3, resume.getDistrict());
-//			pstmt.setString(4, resume.getType());
-//			pstmt.setString(5, resume.getComment());
-//			pstmt.setString(6, resume.사진경로);
-//			pstmt.setString(7, resume.getDesireForm());
-//			pstmt.setInt(8, resume.getDesireIncome());
-//			pstmt.setString(9, resume.getOpenSet());
-//			pstmt.setString(10, resume.getEdu());
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, applyNum);
+			pstmt.setString(2, passOrFail);
 			
 			result = pstmt.executeUpdate();
 
@@ -222,7 +214,7 @@ public class IncruitDao {
 		
 	}
 	
-	public ArrayList<Resume> selectSearchResumeList(Connection conn, Filter filter) {
+	public ArrayList<Resume> selectSearchResumeList(Connection conn, String keyword, Filter filter) {
 		
 		ArrayList<Resume> list = null;
 		Resume resume = null;
@@ -234,7 +226,8 @@ public class IncruitDao {
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, filter);
+			pstmt.setString(2, keyword);
+			pstmt.setInt(1, filter.get()); // 어떤 조건들 넣을지 결정
 			
 			rs = pstmt.executeQuery();
 			
@@ -263,6 +256,48 @@ public class IncruitDao {
 		}
 		
 		return list;
+		
+	}
+	
+	public Resume selectResume(Connection conn, int rNum) {
+		
+		Resume resume = null;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = prop.getProperty("selectResume");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, rNum);
+			
+			rs = pstmt.executeQuery();
+			
+	
+//				resume = new Resume(
+//									rs.getInt("USER_NO"),
+//									rs.getString("user_id"),
+//									rs.getString("user_pwd"),
+//									rs.getString("user_name"),
+//									rs.getString("phone"),
+//									rs.getString("email"),
+//									rs.getString("address"),
+//									rs.getString("interest"),
+//									rs.getDate("enroll_date"),
+//									rs.getDate("modify_date"),
+//									rs.getString("status")
+//									);
+		
+			
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return resume;
 		
 	}
 

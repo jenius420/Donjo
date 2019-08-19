@@ -96,16 +96,29 @@ public class IncruitService {
 		
 	}
 	
-	public ArrayList<Resume> selectSearchResumeList(Filter filter) {
+	public ArrayList<Resume> selectSearchResumeList(String keyword, Filter filter) {
 		
 		Connection conn = getConnection();
 
-		ArrayList<Resume> list = new IncruitDao().selectSearchResumeList(conn, filter);
+		ArrayList<Resume> list = new IncruitDao().selectSearchResumeList(conn, keyword, filter);
 
 		close(conn);
 
 		return list;
 		
 	}
+	
+	public Resume selectResume(int rNum) {
+		
+		Connection conn = getConnection();
+		
+		Resume resume = new IncruitDao().selectResume(conn, rNum);
+		
+		close(conn);
+
+		return resume;
+		
+	}
+
 
 }

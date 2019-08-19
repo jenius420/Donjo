@@ -67,8 +67,7 @@ public class SubmitResumeServlet extends HttpServlet {
 			// 여기서 에러페이지로 가야하는지?		
 		}
 		
-		//response.sendRedirect("manageResume.es"); 이런식으로 서블렛을 바로 부를 수도 있고
-		//response.sendRedirect("manageResume.es?empNum="+empNum); 해당서블렛에서 사용될 변수가 있으면 이렇게 추가하면 됨
+		
 		
 		
 		
