@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import emp.model.vo.Emp;
 import empService.model.service.EmpServiceService;
-import empService.model.service.InterestOwner;
+import owner.model.vo.Owner;
 
 /**
  * Servlet implementation class InterestOwnerManageServlet
@@ -34,11 +34,11 @@ public class InterestOwnerManageServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.setCharacterEncoding("UTF-8");
+		Emp emp = (Emp)request.getSession().getAttribute("loginUser");
 		
-		Emp emp = (Emp)request.getSession().getAttribute("emp");
+		ArrayList<Owner> list = new EmpServiceService().selectInterestOwner(emp.getEmpNum());
 		
-		ArrayList<InterestOwner> list = new EmpServiceService().selectInterestOwner(emp.getEmpNum());
+		//관심기업에 해당하는 공고들 가져오는 DAO
 		
 		RequestDispatcher view = request.getRequestDispatcher("/views/empService/InterestOwnerManage.jsp");
 		view.forward(request, response);

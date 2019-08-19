@@ -1,6 +1,7 @@
 package empService.model.service;
 
 import empService.model.dao.EmpEvalDao;
+import empService.model.dao.ResumeDao;
 import empService.model.vo.ApplicationState;
 import empService.model.vo.EmpEvaluation;
 import empService.model.vo.EmpEvaluationBefore;
@@ -46,6 +47,24 @@ public class EmpEvalService {
 		
 		return list;
 		
+	}
+	
+	public int MakeEmpEval(EmpEvaluation empEval) {
+		
+		Connection conn = getConnection();
+
+		int result = new EmpEvalDao().MakeEmpEval(conn, empEval);
+
+		if (result > 0) {
+			commit(conn);
+
+		} else {
+			rollback(conn);
+		}
+
+		close(conn);
+
+		return result;
 	}
 
 }

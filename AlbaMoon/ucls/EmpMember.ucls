@@ -39,7 +39,7 @@
   </class>  
   <class id="5" language="java" name="member.model.vo.EmpMember" project="AlbaMoon" 
     file="/AlbaMoon/src/member/model/vo/EmpMember.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="1049" width="588" x="-168" y="-152"/>    
+    <position height="1155" width="588" x="-171" y="-217"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      

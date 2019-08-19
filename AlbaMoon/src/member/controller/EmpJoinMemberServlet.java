@@ -34,7 +34,7 @@ public class EmpJoinMemberServlet extends HttpServlet {
 		String eName = request.getParameter("eName");
 		String ecNum = request.getParameter("ecNum");
 		String email = request.getParameter("email");
-		String 
+		
 		
 		
 	}

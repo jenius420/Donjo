@@ -13,6 +13,7 @@ import emp.model.vo.Emp;
 import empService.model.vo.Resume;
 import owner.model.vo.Owner;
 import ownerService.model.service.IncruitService;
+import ownerService.model.vo.Filter;
 
 /**
  * Servlet implementation class SearchResumeListServlet
@@ -36,12 +37,12 @@ public class SearchResumeListServlet extends HttpServlet {
 		
 		request.setCharacterEncoding("UTF-8");
 		
-		String str = request.getParameter("");
+		String keyword = request.getParameter("keyword"); 
 		
-		필터vo 필터객체 = new 필터vo(컬럼컬럼);
+		Filter filter = new Filter();
 		
 
-		ArrayList<Resume> list = new IncruitService().selectSearchResumeList(필터객체);
+		ArrayList<Resume> list = new IncruitService().selectSearchResumeList(keyword, filter);
 		
 		request.setAttribute("", list); // 컬렉션 넘기는거는 게시판 배우고 나서 다시 보기
 		

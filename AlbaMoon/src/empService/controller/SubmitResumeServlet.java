@@ -18,7 +18,7 @@ import empService.model.vo.Resume;
 /**
  * Servlet implementation class ResumeServlet
  */
-@WebServlet("/resume.es")
+@WebServlet("/submitResume.es")
 public class SubmitResumeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -34,6 +34,7 @@ public class SubmitResumeServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		request.setCharacterEncoding("UTF-8");
 		
 		Emp emp = (Emp)request.getSession().getAttribute("user");
@@ -55,12 +56,20 @@ public class SubmitResumeServlet extends HttpServlet {
 		
 		if(result > 0) {
 			request.setAttribute("msg", "이력서를 성공적으로 등록했습니다");	
+			
+			RequestDispatcher view = request.getRequestDispatcher("views/empService/ManageResume.jsp");
+			view.forward(request, response);
+			
 		}else {
 			request.setAttribute("msg", "이력서 등록에 실패했습니다. 다시 시도해주세요");
+			
+			response.sendRedirect("makeResume.es");
+			// 여기서 에러페이지로 가야하는지?		
 		}
 		
-		RequestDispatcher view = request.getRequestDispatcher("views/empService/ManageResume.jsp");
-		view.forward(request, response);
+		
+		
+		
 		
 	}
 

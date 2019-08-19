@@ -36,8 +36,7 @@ public class EmpEvalManageServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.setCharacterEncoding("UTF-8");
-		
+	
 		Emp emp = (Emp)request.getSession().getAttribute("loginUser");
 		
 		ArrayList<EmpEvaluation> empEval = new EmpEvalService().selectEmpEval(emp.getEmpNum());
@@ -49,7 +48,7 @@ public class EmpEvalManageServlet extends HttpServlet {
 		ArrayList<EmpEvaluationBefore> empEvalBf = new EmpEvalService().selectEmpEvalBefore(emp.getEmpNum());
 		
 		if(empEvalBf.size() > 0) {
-			request.setAttribute("empEvalBf", empEval);
+			request.setAttribute("empEvalBf", empEvalBf);
 		}
 		
 		RequestDispatcher view = request.getRequestDispatcher("/views/empService/EmpEvalManage.jsp");

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import emp.model.vo.Emp;
 import empService.model.service.ResumeService;
 import empService.model.vo.Resume;
+import owner.model.vo.Owner;
 import owner.model.vo.OwnerInfo;
 import ownerService.model.service.IncruitService;
 import ownerService.model.vo.Incruit;
@@ -38,7 +39,7 @@ public class SubmitIncruitServlet extends HttpServlet {
 
 		request.setCharacterEncoding("UTF-8");
 		
-		OwnerInfo owner = (OwnerInfo)request.getSession().getAttribute("user");
+		Owner owner = (Owner)request.getSession().getAttribute("user");
 		
 //		jsp에서 컬럼 확정되면 수정하기
 //		String resumeTitle = request.getParameter("resumeTitle");
@@ -54,7 +55,7 @@ public class SubmitIncruitServlet extends HttpServlet {
 		
 		Incruit incruit = new Incruit(컬럼컬럼);
 		
-		int result = new IncruitService().enrollIncruit(Incruit);
+		int result = new IncruitService().enrollIncruit(incruit);
 		
 		if(result > 0) {
 			request.setAttribute("msg", "공고를 성공적으로 등록했습니다");	
@@ -62,8 +63,9 @@ public class SubmitIncruitServlet extends HttpServlet {
 			request.setAttribute("msg", "공고 등록에 실패했습니다");
 		}
 		
-		RequestDispatcher view = request.getRequestDispatcher("views/ownerService/ManageIncruit.jsp");
-		view.forward(request, response);
+		response.sendRedirect("incruitList.os"); // 작성 완료 후 리스트 페이지로 이동
+//		RequestDispatcher view = request.getRequestDispatcher("views/ownerService/ManageIncruit.jsp");
+//		view.forward(request, response);
 		
 	}
 

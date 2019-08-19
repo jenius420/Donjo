@@ -107,4 +107,106 @@ public class ManageMemDao {
 		return list;
 	}
 
+	public int warnEmp(Connection conn, int eNum) {
+		
+		int result = 0;
+
+		PreparedStatement pstmt = null;
+
+		String sql = prop.getProperty("warnEmp");
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, eNum);
+
+			result = pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+
+		return result;
+		
+	}
+	
+	public int warnOwner(Connection conn, int oNum) {
+		
+		int result = 0;
+
+		PreparedStatement pstmt = null;
+
+		String sql = prop.getProperty("warnOwner");
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, oNum);
+
+			result = pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+
+		return result;
+		
+	}
+	
+	public int deleteEmp(Connection conn, int eNum) {
+		
+		int result = 0;
+
+		PreparedStatement pstmt = null;
+
+		String sql = prop.getProperty("deleteEmp");
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, eNum);
+
+			result = pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+
+		return result;
+		
+	}
+	
+	public int deleteOwner(Connection conn, int oNum) {
+		
+		int result = 0;
+
+		PreparedStatement pstmt = null;
+
+		String sql = prop.getProperty("deleteOwner");
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, oNum);
+
+			result = pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+
+		return result;
+		
+	}
+	
+	
+	
 }

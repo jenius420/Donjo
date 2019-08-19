@@ -28,6 +28,7 @@ public class SuitableRecruitServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		RequestDispatcher view = request.getRequestDispatcher("/views/empService/suitableRecruit.jsp");
 		view.forward(request, response);
 	}

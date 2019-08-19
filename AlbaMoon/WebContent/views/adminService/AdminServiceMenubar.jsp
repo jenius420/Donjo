@@ -33,8 +33,7 @@
 <div class="esMenubar">
     <div>
         <span>회원 관리</span>
-       	<div class="esLink" onclick="location.href='<%=request.getContextPath()%>/memList.as';">회원 리스트</div>
-        <div class="esLink" onclick="location.href='<%=request.getContextPath()%>/memWarning.as';">경고 관리</div>
+       	<div class="esLink" onclick="location.href='<%=request.getContextPath()%>/memList.as';">회원 관리</div>
     </div>
     <div class="space"></div>
     <div>
