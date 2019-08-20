@@ -30,6 +30,8 @@ public class SelectProductServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		request.setCharacterEncoding("UTF-8");
+		
 		int pCode = Integer.parseInt(request.getParameter("pCode"));
 		
 		IncruitProduct prod = new ManageIncruitService().selectProduct(pCode);

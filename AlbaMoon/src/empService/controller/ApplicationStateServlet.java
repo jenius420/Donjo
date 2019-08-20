@@ -34,6 +34,8 @@ public class ApplicationStateServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		request.setCharacterEncoding("UTF-8");
+		
 		Emp emp = (Emp)request.getSession().getAttribute("loginUser");
 		
 		ArrayList<Appliant> list = new EmpServiceService().selectApplicationState(emp.getEmpNum());

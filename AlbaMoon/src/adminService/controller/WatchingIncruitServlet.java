@@ -30,6 +30,8 @@ public class WatchingIncruitServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		request.setCharacterEncoding("UTF-8");
+		
 		int wNum = Integer.parseInt(request.getParameter("wNum"));
 		
 		Incruit incruit = new ManageIncruitService().watchingIncruit(wNum);

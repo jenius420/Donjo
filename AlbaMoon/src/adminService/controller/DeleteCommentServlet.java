@@ -29,6 +29,8 @@ public class DeleteCommentServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		request.setCharacterEncoding("UTF-8");
+		
 		String[] cNumArr = request.getParameterValues("cNumArr");
 		
 		int count = new ManageBoardService().deleteComment(cNumArr);

@@ -29,6 +29,8 @@ public class WarnMemServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		request.setCharacterEncoding("UTF-8");
+		
 		int flag = Integer.parseInt(request.getParameter("flag")); // 1구직자 2사업자
 		String[] memArr = request.getParameterValues("memArr");
 		

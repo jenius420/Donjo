@@ -35,6 +35,8 @@ public class ManageEmpServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		request.setCharacterEncoding("UTF-8");
+		
 		Owner owner = (Owner)request.getSession().getAttribute("loginUser");
 		
 		ArrayList<Appliant> list = new IncruitService().selectManageEmp(owner.getoNum());

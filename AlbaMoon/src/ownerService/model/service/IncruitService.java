@@ -132,7 +132,7 @@ public class IncruitService {
 		Connection conn = getConnection();
 		
 		Resume resume = new IncruitDao().selectResume(conn, rNum);
-		new IncruitDao().checkResume(conn, rNum);
+		checkResume(rNum);
 		
 		close(conn);
 
@@ -140,17 +140,17 @@ public class IncruitService {
 		
 	}
 	
-//	public int checkResume(int rNum) {
-//		
-//		Connection conn = getConnection();
-//		
-//		int result = new IncruitDao().checkResume(conn, rNum);
-//		
-//		close(conn);
-//
-//		return result;
-//		
-//	}
+	public int checkResume(int rNum) {
+		
+		Connection conn = getConnection();
+		
+		int result = new IncruitDao().checkResume(conn, rNum);
+		
+		close(conn);
+
+		return result;
+		
+	}
 
 
 }

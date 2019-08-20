@@ -33,6 +33,8 @@ public class SelectSuitableIncruitServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		request.setCharacterEncoding("UTF-8");
+		
 		int rNum = Integer.parseInt(request.getParameter("rNum"));
 		
 		ArrayList<Incruit> list = new ResumeService().selectSuitableIncruit(rNum);
