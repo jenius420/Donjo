@@ -34,6 +34,24 @@ public class IncruitService {
 		
 	}
 	
+	public int closeIncruit(int wNum) {
+		
+		Connection conn = getConnection();
+
+		int result = new IncruitDao().closeIncruit(conn, wNum);
+
+		if (result > 0) {
+			commit(conn);
+
+		} else {
+			rollback(conn);
+		}
+
+		close(conn);
+
+		return result;
+	}
+	
 	
 	public ArrayList<Incruit> selectIncruitList(int oNum) {
 		
@@ -114,6 +132,7 @@ public class IncruitService {
 		Connection conn = getConnection();
 		
 		Resume resume = new IncruitDao().selectResume(conn, rNum);
+		new IncruitDao().checkResume(conn, rNum);
 		
 		close(conn);
 
@@ -121,17 +140,17 @@ public class IncruitService {
 		
 	}
 	
-	public int checkResume(int rNum) {
-		
-		Connection conn = getConnection();
-		
-		int result = new IncruitDao().checkResume(conn, rNum);
-		
-		close(conn);
-
-		return result;
-		
-	}
+//	public int checkResume(int rNum) {
+//		
+//		Connection conn = getConnection();
+//		
+//		int result = new IncruitDao().checkResume(conn, rNum);
+//		
+//		close(conn);
+//
+//		return result;
+//		
+//	}
 
 
 }

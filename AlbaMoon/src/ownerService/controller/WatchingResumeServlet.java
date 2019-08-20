@@ -31,16 +31,20 @@ public class WatchingResumeServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		request.setCharacterEncoding("UTF-8");
+		
 		int rNum = (int)request.getAttribute("rNum");
 		
 		Resume resume = new IncruitService().selectResume(rNum);
-		int result = new IncruitService().checkResume(rNum);
+//		int result = new IncruitService().checkResume(rNum);
 		
-		request.setAttribute("resume", resume);
-		
-		
-		request.getRequestDispatcher("/views/ownerService/WatchingResume.jsp").forward(request, response);
-		
+		if(resume != null) {
+			request.setAttribute("resume", resume);
+			request.getRequestDispatcher("/views/ownerService/WatchingResume.jsp").forward(request, response);
+		}else {
+			request.setAttribute("msg", "페이지 요청에 실패했습니다. 다시 시도해주세요");
+			request.getRequestDispatcher("/views/common/ErrorPage.jsp").forward(request, response);
+		}
 		
 	}
 

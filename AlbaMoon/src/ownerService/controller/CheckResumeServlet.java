@@ -29,17 +29,23 @@ public class CheckResumeServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		request.setCharacterEncoding("UTF-8");
+		
 		int rNum = (int)request.getAttribute("rNum");
 		
 		int result = new IncruitService().checkResume(rNum);
 		
 		if(result > 0) {
 			request.setAttribute("msg", "처리 성공");	
+//			request.getRequestDispatcher("/views/ownerService/ManageEmp.jsp").forward(request, response);
+//			response.sendRedirect("manageEmp.os");
+			
 		}else {
 			request.setAttribute("msg", "처리 실패");
+			request.getRequestDispatcher("/views/common/ErrorPage.jsp").forward(request, response);
 		}
 		
-		response.sendRedirect("manageEmp.os");
+		
 
 	}
 

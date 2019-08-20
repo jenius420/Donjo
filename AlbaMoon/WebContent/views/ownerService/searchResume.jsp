@@ -13,5 +13,7 @@
 	
 	호출서블랫: searchResumeList.os
 	
+	이력서 선택시 해당 이력서 보여주기 watchingResume.os input rNum
+	
 </body>
 </html>

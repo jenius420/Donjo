@@ -66,6 +66,29 @@ public class IncruitDao {
 		
 	}
 	
+	public int closeIncruit(Connection conn, int wNum) {
+		
+		int result = 0;
+
+		PreparedStatement pstmt = null;
+
+		String sql = prop.getProperty("closeIncruit");
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, wNum);
+
+			result = pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+
+		return result;
+	}
+	
 	public ArrayList<Incruit> selectIncruitList(Connection conn, int oNum) {
 		
 		ArrayList<Incruit> list = null;

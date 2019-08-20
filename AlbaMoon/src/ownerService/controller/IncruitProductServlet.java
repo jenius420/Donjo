@@ -33,10 +33,14 @@ public class IncruitProductServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		ArrayList<IncruitProduct> list = new IncruitProductService().selectIncruitProduct();
-		
-		request.setAttribute("list", list);
-		
-		request.getRequestDispatcher("/views/ownerService/IncruitProduct.jsp").forward(request, response);
+
+		if(!list.isEmpty()) {
+			request.setAttribute("list", list);
+			request.getRequestDispatcher("/views/ownerService/IncruitProduct.jsp").forward(request, response);
+		}else {
+			request.setAttribute("msg", "페이지 요청에 실패했습니다. 다시 시도해주세요");
+			request.getRequestDispatcher("/views/common/ErrorPage.jsp").forward(request, response);
+		}
 		
 	}
 

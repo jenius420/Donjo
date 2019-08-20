@@ -16,7 +16,6 @@
 
 	단순 리스트 출력
 	탭형식으로 진행중/마감된 나누면 좋겠음
-	아니면 한 테이블에서 정렬해서 출력하던지
 	
 	<div class="tableArea">
 		
@@ -38,6 +37,7 @@
 					<td><%=i.get() %></td>
 					<td><%=i.get() %></td>
 					<td><%=i.get() %></td>
+					<td>마감 버튼 closeIncruit.os 호출 input wNum</td>
 				</tr>
 				<%}}%>
 				

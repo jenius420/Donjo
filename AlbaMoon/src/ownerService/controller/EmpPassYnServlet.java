@@ -33,6 +33,8 @@ public class EmpPassYnServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		request.setCharacterEncoding("UTF-8");
+		
 		String passYn = (String)request.getAttribute("passYn");
 		int applyNum = (int)request.getAttribute("applyNum");
 		
@@ -40,11 +42,14 @@ public class EmpPassYnServlet extends HttpServlet {
 		
 		if(result > 0) {
 			request.setAttribute("msg", "성공적으로 처리했습니다");	
+//			request.getRequestDispatcher("/views/ownerService/ManageEmp.jsp").forward(request, response);
+//			response.sendRedirect("manageEmp.os");
 		}else {
 			request.setAttribute("msg", "처리에 실패했습니다");
+			request.getRequestDispatcher("/views/common/ErrorPage.jsp").forward(request, response);
 		}
 		
-		response.sendRedirect("manageEmp.os");
+		
 		
 	}
 
