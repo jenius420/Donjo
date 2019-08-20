@@ -8,7 +8,14 @@
 </head>
 <body>
 
-	등록수정삭제는 수업 코드
+	상품 리스트 출력
+	등록
+	<button onclick="Location.href='<%= request.getContextPath()%>/enrollProduct.as'">등록하기</button>
+
+	클릭시 수정페이지 이동
+	selectProduct.as
+	
+	삭제는 없는걸로 
 
 </body>
 </html>

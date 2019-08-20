@@ -2,31 +2,31 @@ package ownerService.model.vo;
 
 public class Filter {
 	
-	private int rNum;
-	private String district;
-	private String type;
-	private String desireForm;
-	private int desireIncome;
-	private String invalidYn;
-	private String finalEdu;
-	private String gender;
+	private int rNum; // key
+	private int eNum; // 구직자key
+	private String district; // 구
+	private String type; // 업직종
+	private String comment; // 하고싶은말
+	private String desireForm; // 급여형태
+	private int desireIncome; // 급여액수
+	private String finalEdu; // 최종학력
 	
 	public Filter() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Filter(int rNum, String district, String type, String desireForm, int desireIncome, String invalidYn,
-			String finalEdu, String gender) {
+	public Filter(int rNum, int eNum, String district, String type, String comment, String desireForm, int desireIncome,
+			String finalEdu) {
 		super();
 		this.rNum = rNum;
+		this.eNum = eNum;
 		this.district = district;
 		this.type = type;
+		this.comment = comment;
 		this.desireForm = desireForm;
 		this.desireIncome = desireIncome;
-		this.invalidYn = invalidYn;
 		this.finalEdu = finalEdu;
-		this.gender = gender;
 	}
 
 	public int getrNum() {
@@ -35,6 +35,14 @@ public class Filter {
 
 	public void setrNum(int rNum) {
 		this.rNum = rNum;
+	}
+
+	public int geteNum() {
+		return eNum;
+	}
+
+	public void seteNum(int eNum) {
+		this.eNum = eNum;
 	}
 
 	public String getDistrict() {
@@ -53,6 +61,14 @@ public class Filter {
 		this.type = type;
 	}
 
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
+
 	public String getDesireForm() {
 		return desireForm;
 	}
@@ -69,14 +85,6 @@ public class Filter {
 		this.desireIncome = desireIncome;
 	}
 
-	public String getInvalidYn() {
-		return invalidYn;
-	}
-
-	public void setInvalidYn(String invalidYn) {
-		this.invalidYn = invalidYn;
-	}
-
 	public String getFinalEdu() {
 		return finalEdu;
 	}
@@ -85,13 +93,7 @@ public class Filter {
 		this.finalEdu = finalEdu;
 	}
 
-	public String getGender() {
-		return gender;
-	}
-
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
+	
 	
 	
 	

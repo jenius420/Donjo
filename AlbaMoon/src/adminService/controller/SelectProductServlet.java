@@ -1,31 +1,26 @@
-package ownerService.controller;
+package adminService.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import emp.model.vo.Emp;
-import owner.model.vo.Owner;
-import ownerService.model.service.IncruitService;
-import ownerService.model.vo.Appliant;
-import ownerService.model.vo.Incruit;
+import adminService.model.service.ManageIncruitService;
+import ownerService.model.vo.IncruitProduct;
 
 /**
- * Servlet implementation class ManageEmpServlet
+ * Servlet implementation class UpdateProductServlet
  */
-@WebServlet("/manageEmp.os")
-public class ManageEmpServlet extends HttpServlet {
+@WebServlet("/selectProduct.as")
+public class SelectProductServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ManageEmpServlet() {
+    public SelectProductServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,14 +30,13 @@ public class ManageEmpServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		Owner owner = (Owner)request.getSession().getAttribute("loginUser");
+		int pNum = Integer.parseInt(request.getParameter("pNum"));
 		
-		ArrayList<Appliant> list = new IncruitService().selectManageEmp(owner.getoNum());
+		IncruitProduct prod = new ManageIncruitService().selectProduct(pNum);
 		
-		request.setAttribute("manageEmpList", list);
+		request.setAttribute("prod", prod);
 		
-		request.getRequestDispatcher("/views/ownerService/ManageEmp.jsp").forward(request, response);
-		
+		request.getRequestDispatcher("/views/adminService/SelectProduct.jsp").forward(request, response);
 	}
 
 	/**
@@ -54,3 +48,12 @@ public class ManageEmpServlet extends HttpServlet {
 	}
 
 }
+
+
+
+
+
+
+
+
+

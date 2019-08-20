@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import emp.model.vo.Emp;
 
 import empService.model.dao.EmpServiceDao;
-import empService.model.vo.ApplicationState;
 import owner.model.vo.Owner;
+import ownerService.model.vo.Appliant;
 
 public class EmpServiceService {
 
@@ -19,11 +19,11 @@ public class EmpServiceService {
 	 * @param emp
 	 * @return 세션유저가 지원한 알바 리스트
 	 */
-	public ArrayList<ApplicationState> selectApplicationState(int empNum) {
+	public ArrayList<Appliant> selectApplicationState(int empNum) {
 
 		Connection conn = getConnection();
 
-		ArrayList<ApplicationState> list = new EmpServiceDao().selectApplicationState(conn, empNum);
+		ArrayList<Appliant> list = new EmpServiceDao().selectApplicationState(conn, empNum);
 
 		close(conn);
 

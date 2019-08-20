@@ -19,6 +19,13 @@ public class IncruitProduct {
 		this.pExplain = pExplain;
 		this.pPay = pPay;
 	}
+	
+	public IncruitProduct(String pTitle, String pExplain, int pPay) {
+		super();
+		this.pTitle = pTitle;
+		this.pExplain = pExplain;
+		this.pPay = pPay;
+	}
 
 	public int getpCode() {
 		return pCode;

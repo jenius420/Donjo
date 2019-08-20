@@ -37,11 +37,11 @@ public class ManageIncruitService {
 		
 	}
 	
-	public ArrayList<IncruitProduct>  selectIncruitProduct() {
+	public ArrayList<IncruitProduct> selectProductList() {
 		
 		Connection conn = getConnection();
 
-		ArrayList<IncruitProduct> list = new ManageIncruitDao().selectIncruitProduct(conn);
+		ArrayList<IncruitProduct> list = new ManageIncruitDao().selectProductList(conn);
 
 		close(conn);
 
@@ -59,6 +59,53 @@ public class ManageIncruitService {
 
 		return incruit;
 		
+	}
+	
+	public int InsertProduct(IncruitProduct prod) {
+		
+		Connection conn = getConnection();
+		
+		int result = new ManageIncruitDao().InsertProduct(conn, prod);
+
+		if (result > 0) {
+			commit(conn);
+
+		} else {
+			rollback(conn);
+		}
+
+		close(conn);
+
+		return result;
+	}
+	
+	public IncruitProduct selectProduct(int pNum) {
+		
+		Connection conn = getConnection();
+
+		IncruitProduct prod = new ManageIncruitDao().selectProduct(conn, pNum);
+
+		close(conn);
+
+		return prod;
+	}
+	
+	public int updateProduct(IncruitProduct prod) {
+		
+		Connection conn = getConnection();
+		
+		int result = new ManageIncruitDao().updateProduct(conn, prod);
+
+		if (result > 0) {
+			commit(conn);
+
+		} else {
+			rollback(conn);
+		}
+
+		close(conn);
+
+		return result;
 	}
 
 }

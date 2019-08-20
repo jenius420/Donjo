@@ -1,31 +1,26 @@
-package ownerService.controller;
+package adminService.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import emp.model.vo.Emp;
-import owner.model.vo.Owner;
-import ownerService.model.service.IncruitService;
-import ownerService.model.vo.Appliant;
-import ownerService.model.vo.Incruit;
+import adminService.model.service.ManageIncruitService;
+import ownerService.model.vo.IncruitProduct;
 
 /**
- * Servlet implementation class ManageEmpServlet
+ * Servlet implementation class InsertProductServlet
  */
-@WebServlet("/manageEmp.os")
-public class ManageEmpServlet extends HttpServlet {
+@WebServlet("/insertProduct.as")
+public class InsertProductServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ManageEmpServlet() {
+    public InsertProductServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,13 +30,22 @@ public class ManageEmpServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		Owner owner = (Owner)request.getSession().getAttribute("loginUser");
+		request.setCharacterEncoding("UTF-8");
 		
-		ArrayList<Appliant> list = new IncruitService().selectManageEmp(owner.getoNum());
+		String pTitle = request.getParameter("pTitle");
+		int pPay = Integer.parseInt(request.getParameter("pPay"));
+		String pExplain = request.getParameter("pExplain");
 		
-		request.setAttribute("manageEmpList", list);
+		IncruitProduct prod = new IncruitProduct(pTitle, pExplain, pPay);
 		
-		request.getRequestDispatcher("/views/ownerService/ManageEmp.jsp").forward(request, response);
+		int result = new ManageIncruitService().InsertProduct(prod);
+		
+		if(result > 0) {
+			response.sendRedirect("boardReportList.as");
+		}else {
+			request.setAttribute("msg", "상품 등록에 실패했습니다");
+			request.getRequestDispatcher("views/common/errorPage.jsp");
+		}
 		
 	}
 

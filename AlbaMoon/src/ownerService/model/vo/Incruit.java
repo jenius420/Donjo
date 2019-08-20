@@ -4,45 +4,48 @@ import java.sql.Date;
 
 public class Incruit {
 	
-	private int wNum;
-	private String wTitle;
-	private int oNum;
-	private Date workStartTerm;
-	private Date workEndTerm;
-	private String workDay;
-	private String workStartTime;
-	private String workEndTime;
-	private int termNo;
-	private String gender;
-	private int age;
-	private String edu;
-	private Date enrollDate;
-	private String status;
-	private Date doneDate;
-	private String salaryForm;
-	private int salary;
-	private int pNum;
-	private String product;
-	private String description;
+	private int wNum; // KEY
+	private String wTitle; // 제목
+	private int oNum; // 사업자KEY
+	private String opName; // 사업장명+
+	private Date workStartTerm; // 시작일
+	private Date workEndTerm; // 종료일
+	private String workDay; // 근무요일
+	private String workStartTime; // 시작시간
+	private String workEndTime; // 종료시간
+	private String termName; // 근무기간+
+	private String gender; // 성별
+	private int age; // 나이
+	private String edu; // 학력
+	private Date enrollDate; // 등록일
+	private String status; // 진행중/마감
+	private Date doneDate; // 마감일
+	private String salaryForm; // 급여형태
+	private int salary; // 급여
+	private int pNum; // 상품코드
+	private String product; // 상품명+
+	private String description; // 상세내역
 	
 	public Incruit() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Incruit(int wNum, String wTitle, int oNum, Date workStartTerm, Date workEndTerm, String workDay,
-			String workStartTime, String workEndTime, int termNo, String gender, int age, String edu, Date enrollDate,
-			String status, Date doneDate, String salaryForm, int salary, int pNum, String product, String description) {
+	public Incruit(int wNum, String wTitle, int oNum, String opName, Date workStartTerm, Date workEndTerm,
+			String workDay, String workStartTime, String workEndTime, String termName, String gender, int age,
+			String edu, Date enrollDate, String status, Date doneDate, String salaryForm, int salary, int pNum,
+			String product, String description) {
 		super();
 		this.wNum = wNum;
 		this.wTitle = wTitle;
 		this.oNum = oNum;
+		this.opName = opName;
 		this.workStartTerm = workStartTerm;
 		this.workEndTerm = workEndTerm;
 		this.workDay = workDay;
 		this.workStartTime = workStartTime;
 		this.workEndTime = workEndTime;
-		this.termNo = termNo;
+		this.termName = termName;
 		this.gender = gender;
 		this.age = age;
 		this.edu = edu;
@@ -78,6 +81,14 @@ public class Incruit {
 
 	public void setoNum(int oNum) {
 		this.oNum = oNum;
+	}
+
+	public String getOpName() {
+		return opName;
+	}
+
+	public void setOpName(String opName) {
+		this.opName = opName;
 	}
 
 	public Date getWorkStartTerm() {
@@ -120,12 +131,12 @@ public class Incruit {
 		this.workEndTime = workEndTime;
 	}
 
-	public int getTermNo() {
-		return termNo;
+	public String getTermName() {
+		return termName;
 	}
 
-	public void setTermNo(int termNo) {
-		this.termNo = termNo;
+	public void setTermName(String termName) {
+		this.termName = termName;
 	}
 
 	public String getGender() {
@@ -215,6 +226,9 @@ public class Incruit {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
+	
+	
 	
 	
 

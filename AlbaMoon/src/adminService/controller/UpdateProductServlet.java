@@ -1,31 +1,26 @@
-package ownerService.controller;
+package adminService.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import emp.model.vo.Emp;
-import owner.model.vo.Owner;
-import ownerService.model.service.IncruitService;
-import ownerService.model.vo.Appliant;
-import ownerService.model.vo.Incruit;
+import adminService.model.service.ManageIncruitService;
+import ownerService.model.vo.IncruitProduct;
 
 /**
- * Servlet implementation class ManageEmpServlet
+ * Servlet implementation class UpdateProductServlet
  */
-@WebServlet("/manageEmp.os")
-public class ManageEmpServlet extends HttpServlet {
+@WebServlet("/updateProduct.as")
+public class UpdateProductServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ManageEmpServlet() {
+    public UpdateProductServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,14 +30,24 @@ public class ManageEmpServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		Owner owner = (Owner)request.getSession().getAttribute("loginUser");
+		int pNum = Integer.parseInt(request.getParameter("pNum"));
+		String pTilte = request.getParameter("pTilte");
+		String pExplain = request.getParameter("pExplain");
+		int pPay = Integer.parseInt(request.getParameter("pPay"));
 		
-		ArrayList<Appliant> list = new IncruitService().selectManageEmp(owner.getoNum());
+		IncruitProduct prod = new IncruitProduct(pNum, pTilte, pExplain, pPay);
 		
-		request.setAttribute("manageEmpList", list);
+		int result = new ManageIncruitService().updateProduct(prod);
 		
-		request.getRequestDispatcher("/views/ownerService/ManageEmp.jsp").forward(request, response);
+		if(result > 0) {
+			response.sendRedirect("manageProduct.as");
+			
+		}else {
+			request.setAttribute("msg", "상품 수정에 실패했습니다");
+			request.getRequestDispatcher("/views/common/ErrorPage.jsp").forward(request, response);
+		}
 		
+
 	}
 
 	/**

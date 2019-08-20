@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import emp.model.vo.Emp;
 import empService.model.service.EmpServiceService;
-import empService.model.vo.ApplicationState;
+import ownerService.model.vo.Appliant;
 
 /**
  * Servlet implementation class ApplicationStateServlet
@@ -36,7 +36,7 @@ public class ApplicationStateServlet extends HttpServlet {
 		
 		Emp emp = (Emp)request.getSession().getAttribute("loginUser");
 		
-		ArrayList<ApplicationState> list = new EmpServiceService().selectApplicationState(emp.getEmpNum());
+		ArrayList<Appliant> list = new EmpServiceService().selectApplicationState(emp.getEmpNum());
 		
 		if(list.size() > 0) {
 			request.setAttribute("applicationStatelist", list);

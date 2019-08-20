@@ -97,14 +97,14 @@ public class ManageIncruitDao {
 		
 	}
 	
-	public ArrayList<IncruitProduct> selectIncruitProduct(Connection conn) {
+	public ArrayList<IncruitProduct> selectProductList(Connection conn) {
 		
 		ArrayList<IncruitProduct> list = null;	
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String sql = prop.getProperty("selectIncruitProduct");
+		String sql = prop.getProperty("selectProductList");
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -167,6 +167,93 @@ public class ManageIncruitDao {
 		
 		return incruit;
 		
+	}
+	
+	public int InsertProduct(Connection conn, IncruitProduct prod) {
+		
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("InsertProduct");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, prod.getpTitle());
+			pstmt.setString(2, prod.getpExplain());
+			pstmt.setInt(3, prod.getpPay());
+			
+			result = pstmt.executeUpdate();
+
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+		
+	}
+	
+	public IncruitProduct selectProduct(Connection conn, int pNum) {
+		
+		IncruitProduct prod = null;	
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = prop.getProperty("selectProduct");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, pNum);
+			
+			rs = pstmt.executeQuery();
+			
+			prod = new IncruitProduct(
+								rs.getInt("PCODE"),
+								rs.getString("PTITLE"),
+								rs.getString("PEXPLAIN"),
+								rs.getInt("PPAY")
+								);
+	
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return prod;
+	}
+	
+	public int updateProduct(Connection conn, IncruitProduct prod) {
+		
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("updateProduct");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, prod.getpTitle());
+			pstmt.setString(2, prod.getpExplain());
+			pstmt.setInt(3, prod.getpPay());
+			pstmt.setInt(4, prod.getpCode());
+			
+			result = pstmt.executeUpdate();
+
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
 	}
 
 }

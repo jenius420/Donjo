@@ -4,97 +4,99 @@ import java.sql.Date;
 
 public class EmpEvaluation {
 	
-	private int eevalNum;
-	private int onum;
-	private String opname;
-	private int empNum;
-	private int eevalPoint;
-	private String eevalComment;
-	private String invalidEval;
+	private int sevalNum;
+	private int eNum;
+	private int oNum;
+	private String opName;
+	private int sevalPoint;
+	private String eComment;
 	private Date enrollDate;
+	private Date workStartTerm;
+	private Date workEndTerm;
 	
 	public EmpEvaluation() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public EmpEvaluation(int eevalNum, int onum, String opname, int empNum, int eevalPoint, String eevalComment, String invalidEval,
-			Date enrollDate) {
+	public EmpEvaluation(int sevalNum, int eNum, int oNum, String opName, int sevalPoint, String eComment,
+			Date enrollDate, Date workStartTerm, Date workEndTerm) {
 		super();
-		this.eevalNum = eevalNum;
-		this.onum = onum;
-		this.opname = opname;
-		this.empNum = empNum;
-		this.eevalPoint = eevalPoint;
-		this.eevalComment = eevalComment;
-		this.invalidEval = invalidEval;
+		this.sevalNum = sevalNum;
+		this.eNum = eNum;
+		this.oNum = oNum;
+		this.opName = opName;
+		this.sevalPoint = sevalPoint;
+		this.eComment = eComment;
 		this.enrollDate = enrollDate;
-	}
-	
-
-	public EmpEvaluation(int eevalNum, String opname, int eevalPoint, String eevalComment, Date enrollDate) {
-		super();
-		this.eevalNum = eevalNum;
-		this.opname = opname;
-		this.eevalPoint = eevalPoint;
-		this.eevalComment = eevalComment;
-		this.enrollDate = enrollDate;
+		this.workStartTerm = workStartTerm;
+		this.workEndTerm = workEndTerm;
 	}
 
-	public String getOpname() {
-		return opname;
+
+
+	public Date getWorkStartTerm() {
+		return workStartTerm;
 	}
 
-	public void setOpname(String opname) {
-		this.opname = opname;
+	public void setWorkStartTerm(Date workStartTerm) {
+		this.workStartTerm = workStartTerm;
 	}
 
-	public int getEevalNum() {
-		return eevalNum;
+	public Date getWorkEndTerm() {
+		return workEndTerm;
 	}
 
-	public void setEevalNum(int eevalNum) {
-		this.eevalNum = eevalNum;
+	public void setWorkEndTerm(Date workEndTerm) {
+		this.workEndTerm = workEndTerm;
 	}
 
-	public int getOnum() {
-		return onum;
+	public int getSevalNum() {
+		return sevalNum;
 	}
 
-	public void setOnum(int onum) {
-		this.onum = onum;
+	public void setSevalNum(int sevalNum) {
+		this.sevalNum = sevalNum;
 	}
 
-	public int getEmpNum() {
-		return empNum;
+	public int geteNum() {
+		return eNum;
 	}
 
-	public void setEmpNum(int empNum) {
-		this.empNum = empNum;
+	public void seteNum(int eNum) {
+		this.eNum = eNum;
 	}
 
-	public int getEevalPoint() {
-		return eevalPoint;
+	public int getoNum() {
+		return oNum;
 	}
 
-	public void setEevalPoint(int eevalPoint) {
-		this.eevalPoint = eevalPoint;
+	public void setoNum(int oNum) {
+		this.oNum = oNum;
 	}
 
-	public String getEevalComment() {
-		return eevalComment;
+	public String getOpName() {
+		return opName;
 	}
 
-	public void setEevalComment(String eevalComment) {
-		this.eevalComment = eevalComment;
+	public void setOpName(String opName) {
+		this.opName = opName;
 	}
 
-	public String getInvalidEval() {
-		return invalidEval;
+	public int getSevalPoint() {
+		return sevalPoint;
 	}
 
-	public void setInvalidEval(String invalidEval) {
-		this.invalidEval = invalidEval;
+	public void setSevalPoint(int sevalPoint) {
+		this.sevalPoint = sevalPoint;
+	}
+
+	public String geteComment() {
+		return eComment;
+	}
+
+	public void seteComment(String eComment) {
+		this.eComment = eComment;
 	}
 
 	public Date getEnrollDate() {
@@ -104,6 +106,7 @@ public class EmpEvaluation {
 	public void setEnrollDate(Date enrollDate) {
 		this.enrollDate = enrollDate;
 	}
+
 	
 	
 	

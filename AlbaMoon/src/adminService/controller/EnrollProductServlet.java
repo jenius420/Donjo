@@ -1,31 +1,23 @@
-package ownerService.controller;
+package adminService.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import emp.model.vo.Emp;
-import owner.model.vo.Owner;
-import ownerService.model.service.IncruitService;
-import ownerService.model.vo.Appliant;
-import ownerService.model.vo.Incruit;
-
 /**
- * Servlet implementation class ManageEmpServlet
+ * Servlet implementation class EnrollProductServlet
  */
-@WebServlet("/manageEmp.os")
-public class ManageEmpServlet extends HttpServlet {
+@WebServlet("/enrollProduct.as")
+public class EnrollProductServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ManageEmpServlet() {
+    public EnrollProductServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,15 +26,7 @@ public class ManageEmpServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		Owner owner = (Owner)request.getSession().getAttribute("loginUser");
-		
-		ArrayList<Appliant> list = new IncruitService().selectManageEmp(owner.getoNum());
-		
-		request.setAttribute("manageEmpList", list);
-		
-		request.getRequestDispatcher("/views/ownerService/ManageEmp.jsp").forward(request, response);
-		
+		request.getRequestDispatcher("views/adminService/EnrollProduct.jsp").forward(request, response);
 	}
 
 	/**

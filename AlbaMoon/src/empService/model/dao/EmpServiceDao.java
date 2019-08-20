@@ -10,11 +10,11 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import emp.model.vo.Emp;
-import empService.model.vo.ApplicationState;
 import empService.model.vo.EmpEvaluation;
 import empService.model.vo.EmpEvaluationBefore;
 import empService.model.vo.Resume;
 import owner.model.vo.Owner;
+import ownerService.model.vo.Appliant;
 
 import static common.JDBCTemplate.*;
 
@@ -35,9 +35,9 @@ public class EmpServiceDao {
 	}
 	
 	
-	public ArrayList<ApplicationState> selectApplicationState(Connection conn, int empNum){
+	public ArrayList<Appliant> selectApplicationState(Connection conn, int empNum){
 		
-		ArrayList<ApplicationState> list = null;	
+		ArrayList<Appliant> list = null;	
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
@@ -51,7 +51,7 @@ public class EmpServiceDao {
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				list.add(new ApplicationState(
+				list.add(new Appliant(
 									rs.getInt("APPLYNUM"),
 									rs.getInt("ENUM"),
 									rs.getInt("WNUM"),

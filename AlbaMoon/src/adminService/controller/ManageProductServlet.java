@@ -33,7 +33,7 @@ public class ManageProductServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		ArrayList<IncruitProduct> list = new ManageIncruitService().selectIncruitProduct();
+		ArrayList<IncruitProduct> list = new ManageIncruitService().selectProductList();
 		
 		request.setAttribute("list", list);
 		

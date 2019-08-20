@@ -4,61 +4,46 @@ import java.sql.Date;
 
 public class Resume {
 	
-	private int rnum;
-	private String resumeTitle;
-	private int empNum;
+	private int rnum; // key
+	private int empNum; // 구직자key
+	private String eName;
+	private int phone;
+	private String email;
 	private String district;
 	private String type;
 	private String comment;
-	private String picture;
 	private Date updateDate;
 	private String invalid;
 	private String desireForm;
 	private int desireIncome;
 	private String openSet;
 	private String edu;
+	private String picture;
 	
 	public Resume() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Resume(int rnum, String resumeTitle, int empNum, String district, String type, String comment,
-			String picture, Date updateDate, String invalid, String desireForm, int desireIncome, String openSet,
-			String edu) {
+	public Resume(int rnum, int empNum, String eName, int phone, String email, String district, String type,
+			String comment, Date updateDate, String invalid, String desireForm, int desireIncome, String openSet,
+			String edu, String picture) {
 		super();
 		this.rnum = rnum;
-		this.resumeTitle = resumeTitle;
 		this.empNum = empNum;
+		this.eName = eName;
+		this.phone = phone;
+		this.email = email;
 		this.district = district;
 		this.type = type;
 		this.comment = comment;
-		this.picture = picture;
 		this.updateDate = updateDate;
 		this.invalid = invalid;
 		this.desireForm = desireForm;
 		this.desireIncome = desireIncome;
 		this.openSet = openSet;
 		this.edu = edu;
-	}
-	
-	
-
-	
-
-	public Resume(String resumeTitle, int empNum, String district, String type, String comment, String picture,
-			String desireForm, int desireIncome, String openSet, String edu) {
-		super();
-		this.resumeTitle = resumeTitle;
-		this.empNum = empNum;
-		this.district = district;
-		this.type = type;
-		this.comment = comment;
 		this.picture = picture;
-		this.desireForm = desireForm;
-		this.desireIncome = desireIncome;
-		this.openSet = openSet;
-		this.edu = edu;
 	}
 
 	public int getRnum() {
@@ -69,20 +54,36 @@ public class Resume {
 		this.rnum = rnum;
 	}
 
-	public String getResumeTitle() {
-		return resumeTitle;
-	}
-
-	public void setResumeTitle(String resumeTitle) {
-		this.resumeTitle = resumeTitle;
-	}
-
 	public int getEmpNum() {
 		return empNum;
 	}
 
 	public void setEmpNum(int empNum) {
 		this.empNum = empNum;
+	}
+
+	public String geteName() {
+		return eName;
+	}
+
+	public void seteName(String eName) {
+		this.eName = eName;
+	}
+
+	public int getPhone() {
+		return phone;
+	}
+
+	public void setPhone(int phone) {
+		this.phone = phone;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getDistrict() {
@@ -107,14 +108,6 @@ public class Resume {
 
 	public void setComment(String comment) {
 		this.comment = comment;
-	}
-
-	public String getPicture() {
-		return picture;
-	}
-
-	public void setPicture(String picture) {
-		this.picture = picture;
 	}
 
 	public Date getUpdateDate() {
@@ -164,6 +157,15 @@ public class Resume {
 	public void setEdu(String edu) {
 		this.edu = edu;
 	}
+
+	public String getPicture() {
+		return picture;
+	}
+
+	public void setPicture(String picture) {
+		this.picture = picture;
+	}
+
 	
 	
 	
