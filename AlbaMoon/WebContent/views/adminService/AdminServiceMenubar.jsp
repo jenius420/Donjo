@@ -33,7 +33,7 @@
 <div class="esMenubar">
     <div>
         <span>회원 관리</span>
-       	<div class="esLink" onclick="location.href='<%=request.getContextPath()%>/memList.as';">회원 관리</div>
+       	<div class="esLink" onclick="location.href='<%=request.getContextPath()%>/memList.as';">회원 관리</div> 회원들 컬럼 정리해야함
     </div>
     <div class="space"></div>
     <div>

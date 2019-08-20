@@ -59,13 +59,12 @@ public class SubmitIncruitServlet extends HttpServlet {
 		
 		if(result > 0) {
 			request.setAttribute("msg", "공고를 성공적으로 등록했습니다");	
+//			request.getRequestDispatcher("/views/ownerService/ManageIncruit.jsp").forward(request, response);
+//			response.sendRedirect("incruitList.os"); 
 		}else {
 			request.setAttribute("msg", "공고 등록에 실패했습니다");
+			request.getRequestDispatcher("/views/common/ErrorPage.jsp").forward(request, response);
 		}
-		
-		response.sendRedirect("incruitList.os"); // 작성 완료 후 리스트 페이지로 이동
-//		RequestDispatcher view = request.getRequestDispatcher("views/ownerService/ManageIncruit.jsp");
-//		view.forward(request, response);
 		
 	}
 

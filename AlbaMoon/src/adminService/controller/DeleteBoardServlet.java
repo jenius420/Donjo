@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import adminService.model.service.ManageBoardService;
+import adminService.model.service.ManageMemService;
 
 /**
  * Servlet implementation class DeleteBoardServlet
@@ -29,14 +30,17 @@ public class DeleteBoardServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int tNum = Integer.parseInt(request.getParameter("tNum"));
+		request.setCharacterEncoding("UTF-8");
 		
-		int result = new ManageBoardService().deleteBoard(tNum);
+		String[] tNumArr = request.getParameterValues("tNumArr");
 		
-//		비동기처리
-//		request.getRequestDispatcher("/views/adminService/DeleteBoard.jsp").forward(request, response);
+		int count = new ManageBoardService().deleteBoard(tNumArr);
 		
-		
+		// 비동기 처리?
+		request.setAttribute("msg", count + "개 게시글 삭제 완료");
+		request.getRequestDispatcher("/views/adminService/BoardReportList.jsp").forward(request, response);
+
+		response.sendRedirect("boardReportList.as?msg="+ count + "개 게시글 삭제 완료"); 
 	}
 
 	/**

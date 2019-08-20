@@ -34,6 +34,8 @@ public class ManageResumeServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		request.setCharacterEncoding("UTF-8");
+		
 		Emp emp = (Emp)request.getSession().getAttribute("loginUser");
 		
 		ArrayList<Resume> list = new ResumeService().selectResumeList(emp.getEmpNum());

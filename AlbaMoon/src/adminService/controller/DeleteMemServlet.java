@@ -29,6 +29,8 @@ public class DeleteMemServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		request.setCharacterEncoding("UTF-8");
+		
 		int flag = Integer.parseInt(request.getParameter("flag"));
 		String[] memArr = request.getParameterValues("memArr");
 		
@@ -40,8 +42,11 @@ public class DeleteMemServlet extends HttpServlet {
 			count = new ManageMemService().deleteOwner(memArr); 
 		}
 		
-		//비동기 처리
-		
+		// 비동기 처리?
+		request.setAttribute("msg", count + "개 회원 삭제 완료");
+		request.getRequestDispatcher("/views/adminService/MemList.jsp").forward(request, response);
+
+		response.sendRedirect("memList.as?msg="+ count + "개 회원 삭제 완료"); 
 		
 	}
 

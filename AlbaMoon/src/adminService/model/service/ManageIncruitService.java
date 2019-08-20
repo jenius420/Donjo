@@ -53,7 +53,7 @@ public class ManageIncruitService {
 		
 		Connection conn = getConnection();
 
-		ArrayList<Incruit> incruit = new ManageIncruitDao().watchingIncruit(conn, wNum);
+		Incruit incruit = new ManageIncruitDao().watchingIncruit(conn, wNum);
 
 		close(conn);
 
@@ -79,11 +79,11 @@ public class ManageIncruitService {
 		return result;
 	}
 	
-	public IncruitProduct selectProduct(int pNum) {
+	public IncruitProduct selectProduct(int pCode) {
 		
 		Connection conn = getConnection();
 
-		IncruitProduct prod = new ManageIncruitDao().selectProduct(conn, pNum);
+		IncruitProduct prod = new ManageIncruitDao().selectProduct(conn, pCode);
 
 		close(conn);
 

@@ -38,46 +38,56 @@ public class ManageBoardService {
 		
 	}
 	
-	public int deleteBoard(int tNum) {
-		
+	public int deleteBoard(String[] tNumArr) {
+
 		Connection conn = getConnection();
 		
+		int count = 0;
 		int result = 0;
 		
-		result = new ManageBoardDao().deleteBoard(conn, tNum);
-
-		if (result > 0) {
-			commit(conn);
-
-		} else {
-			rollback(conn);
+		for(int i=0; i<tNumArr.length; i++) {
+			
+			result = new ManageBoardDao().deleteBoard(conn, Integer.parseInt(tNumArr[i]));
+	
+			if (result > 0) {
+				commit(conn);
+				count++;
+	
+			} else {
+				rollback(conn);
+			}
 		}
 
 		close(conn);
 
-		return result;
+		return count;
 		
 	}
 	
 	
-	public int deleteComment(int deleteComment) {
+	public int deleteComment(String[] cNumArr) {
 		
 		Connection conn = getConnection();
 		
+		int count = 0;
 		int result = 0;
 		
-		result = new ManageBoardDao().deleteComment(conn, deleteComment);
-
-		if (result > 0) {
-			commit(conn);
-
-		} else {
-			rollback(conn);
+		for(int i=0; i<cNumArr.length; i++) {
+			
+			result = new ManageBoardDao().deleteComment(conn, Integer.parseInt(cNumArr[i]));
+	
+			if (result > 0) {
+				commit(conn);
+				count++;
+	
+			} else {
+				rollback(conn);
+			}
 		}
 
 		close(conn);
 
-		return result;
+		return count;
 		
 	}
 

@@ -30,13 +30,19 @@ public class SelectProductServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int pNum = Integer.parseInt(request.getParameter("pNum"));
+		request.setCharacterEncoding("UTF-8");
 		
-		IncruitProduct prod = new ManageIncruitService().selectProduct(pNum);
+		int pCode = Integer.parseInt(request.getParameter("pCode"));
 		
-		request.setAttribute("prod", prod);
+		IncruitProduct prod = new ManageIncruitService().selectProduct(pCode);
 		
-		request.getRequestDispatcher("/views/adminService/SelectProduct.jsp").forward(request, response);
+		if(prod != null) {
+			request.setAttribute("prod", prod);
+			request.getRequestDispatcher("/views/adminService/SelectProduct.jsp").forward(request, response);
+		}else {
+			request.setAttribute("msg", "페이지 요청에 실패했습니다. 다시 시도해주세요");
+			request.getRequestDispatcher("/views/common/ErrorPage.jsp").forward(request, response);
+		}
 	}
 
 	/**

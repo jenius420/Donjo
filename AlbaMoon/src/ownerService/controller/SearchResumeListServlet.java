@@ -39,14 +39,22 @@ public class SearchResumeListServlet extends HttpServlet {
 		
 		String keyword = request.getParameter("keyword"); 
 		
+		// 여기해야대
 		Filter filter = new Filter();
 		
 
 		ArrayList<Resume> list = new IncruitService().selectSearchResumeList(keyword, filter);
 		
-		request.setAttribute("", list); // 컬렉션 넘기는거는 게시판 배우고 나서 다시 보기
+
+		//비동기 처리??
 		
-		request.getRequestDispatcher("/views/ownerService/searchResume.jsp").forward(request, response);
+		if(!list.isEmpty()) {
+			request.setAttribute("list", list);
+			request.getRequestDispatcher("/views/ownerService/searchResume.jsp").forward(request, response);
+		}else {
+			request.setAttribute("msg", "조회에 실패했습니다. 다시 시도해주세요");
+			request.getRequestDispatcher("/views/common/searchResume.jsp").forward(request, response);
+		}
 		
 	}
 

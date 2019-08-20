@@ -57,8 +57,7 @@ public class SubmitResumeServlet extends HttpServlet {
 		if(result > 0) {
 			request.setAttribute("msg", "이력서를 성공적으로 등록했습니다");	
 			
-			RequestDispatcher view = request.getRequestDispatcher("views/empService/ManageResume.jsp");
-			view.forward(request, response);
+			request.getRequestDispatcher("views/empService/ManageResume.jsp").forward(request, response);
 			
 		}else {
 			request.setAttribute("msg", "이력서 등록에 실패했습니다. 다시 시도해주세요");

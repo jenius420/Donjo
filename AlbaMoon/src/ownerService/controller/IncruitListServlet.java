@@ -34,13 +34,19 @@ public class IncruitListServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		request.setCharacterEncoding("UTF-8");
+		
 		Owner owner = (Owner)request.getSession().getAttribute("loginUser");
 		
 		ArrayList<Incruit> list = new IncruitService().selectIncruitList(owner.getoNum());
 		
-		request.setAttribute("incruitList", list); // 컬렉션 넘기는거는 게시판 배우고 나서 다시 보기
-		
-		request.getRequestDispatcher("/views/ownerService/IncruitList.jsp").forward(request, response);
+		if(!list.isEmpty()) {
+			request.setAttribute("incruitList", list);
+			request.getRequestDispatcher("/views/ownerService/IncruitList.jsp").forward(request, response);
+		}else {
+			request.setAttribute("msg", "페이지 요청에 실패했습니다. 다시 시도해주세요");
+			request.getRequestDispatcher("/views/common/ErrorPage.jsp").forward(request, response);
+		}
 		
 	}
 

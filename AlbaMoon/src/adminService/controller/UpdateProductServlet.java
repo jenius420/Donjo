@@ -30,20 +30,21 @@ public class UpdateProductServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int pNum = Integer.parseInt(request.getParameter("pNum"));
+		request.setCharacterEncoding("UTF-8");
+		
+		int pCode = Integer.parseInt(request.getParameter("pCode"));
 		String pTilte = request.getParameter("pTilte");
 		String pExplain = request.getParameter("pExplain");
 		int pPay = Integer.parseInt(request.getParameter("pPay"));
 		
-		IncruitProduct prod = new IncruitProduct(pNum, pTilte, pExplain, pPay);
+		IncruitProduct prod = new IncruitProduct(pCode, pTilte, pExplain, pPay);
 		
 		int result = new ManageIncruitService().updateProduct(prod);
 		
 		if(result > 0) {
 			response.sendRedirect("manageProduct.as");
-			
 		}else {
-			request.setAttribute("msg", "상품 수정에 실패했습니다");
+			request.setAttribute("msg", "상품정보 수정에 실패했습니다");
 			request.getRequestDispatcher("/views/common/ErrorPage.jsp").forward(request, response);
 		}
 		

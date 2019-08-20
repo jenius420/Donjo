@@ -10,7 +10,8 @@
 
 	등록 페이지와 형태는 동일
 	
-	수정/취소 버튼 updateProduct.as
+	수정 updateProduct.as input 4개다
+	취소-뒤로가기
 
 </body>
 </html>
