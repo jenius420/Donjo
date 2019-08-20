@@ -40,8 +40,11 @@ public class WarnMemServlet extends HttpServlet {
 			//count = new ManageMemService().warnOwner(memArr); 사업자는 경고 없었는지?
 		}
 		
-		
-		// 비동기 처리
+		// 비동기 처리?
+		request.setAttribute("msg", count + "명 경고 완료");
+		request.getRequestDispatcher("/views/adminService/MemList.jsp").forward(request, response);
+
+		response.sendRedirect("memList.as?msg="+ count + "명 경고 완료"); 
 		
 	}
 

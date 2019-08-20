@@ -29,12 +29,15 @@ public class DeleteCommentServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int commentNum = Integer.parseInt(request.getParameter("commentNum"));
+		String[] cNumArr = request.getParameterValues("cNumArr");
 		
-		int result = new ManageBoardService().deleteComment(commentNum);
+		int count = new ManageBoardService().deleteComment(cNumArr);
 		
-//		비동기처리
-//		request.getRequestDispatcher("/views/adminService/DeleteComment.jsp").forward(request, response);
+		// 비동기 처리?
+		request.setAttribute("msg", count + "개 댓글 삭제 완료");
+		request.getRequestDispatcher("/views/adminService/CommentReportList.jsp").forward(request, response);
+
+		response.sendRedirect("commentReportList.as?msg="+ count + "개 댓글 삭제 완료"); 
 		
 	}
 

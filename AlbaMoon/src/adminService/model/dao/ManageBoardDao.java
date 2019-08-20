@@ -89,10 +89,15 @@ public class ManageBoardDao {
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				// 댓글은 신고없는지?
 				list.add(new Comment(
-									rs.getInt("TNUM")
-								
+									rs.getInt("COMMENTNUM"),
+									rs.getString("COMMENTEXPLAIN"),
+									rs.getInt("TNUM"),
+									rs.getString("DELETEORNOT"),
+									rs.getDate("ENROLLDATE"),
+									rs.getInt("ENUM"),
+									rs.getString("ENAME"),
+									rs.getInt("WARNING")
 									));
 			}
 			

@@ -40,8 +40,11 @@ public class DeleteMemServlet extends HttpServlet {
 			count = new ManageMemService().deleteOwner(memArr); 
 		}
 		
-		//비동기 처리
-		
+		// 비동기 처리?
+		request.setAttribute("msg", count + "개 회원 삭제 완료");
+		request.getRequestDispatcher("/views/adminService/MemList.jsp").forward(request, response);
+
+		response.sendRedirect("memList.as?msg="+ count + "개 회원 삭제 완료"); 
 		
 	}
 

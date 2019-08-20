@@ -34,10 +34,13 @@ public class IngIncruitServlet extends HttpServlet {
 		
 		ArrayList<Incruit> list = new ManageIncruitService().selectIngIncruitList();
 		
-		request.setAttribute("list", list);
-		
-		request.getRequestDispatcher("/views/adminService/IngIncruit.jsp").forward(request, response);
-		//채용이 되도 마감은 아님
+		if(!list.isEmpty()) {
+			request.setAttribute("list", list);
+			request.getRequestDispatcher("/views/adminService/IngIncruit.jsp").forward(request, response);
+		}else {
+			request.setAttribute("msg", "페이지 요청에 실패했습니다. 다시 시도해주세요");
+			request.getRequestDispatcher("/views/common/ErrorPage.jsp").forward(request, response);
+		}
 	}
 
 	/**

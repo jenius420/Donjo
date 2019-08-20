@@ -48,8 +48,27 @@ public class ManageIncruitDao {
 			if(rs.next()) {
 
 				list.add(new Incruit(
-						//가져올 컬럼 넣dfd기
-									rs.getInt("ENUM"),
+									rs.getInt("WNUM"),
+									rs.getString("WTITLE"),
+									rs.getInt("ONUM"),
+									rs.getString("OPNAME"),
+									rs.getDate("WORKSTARTTERM"),
+									rs.getDate("WORKENDTERM"),
+									rs.getString("WORKDAY"),
+									rs.getString("WORKSTARTTIME"),
+									rs.getString("WORKENDTIME"),
+									rs.getString("TERMNAME"),
+									rs.getString("WORKGENDER"),
+									rs.getInt("WORKAGE"),
+									rs.getString("WORKEDU"),
+									rs.getDate("STARTDATE"),
+									rs.getString("INCRUITSTATUS"),
+									rs.getDate("ENDDATE"),
+									rs.getString("WORKFORM"),
+									rs.getInt("SALARY"),
+									rs.getInt("APPLYPRODUCT"),
+									rs.getString("PTITLE"),
+									rs.getString("REXPLAIN")
 									));
 			}
 			
@@ -81,8 +100,27 @@ public class ManageIncruitDao {
 			if(rs.next()) {
 
 				list.add(new Incruit(
-						//위 메소드랑 동일 컬럼
-									rs.getInt("ENUM"),
+									rs.getInt("WNUM"),
+									rs.getString("WTITLE"),
+									rs.getInt("ONUM"),
+									rs.getString("OPNAME"),
+									rs.getDate("WORKSTARTTERM"),
+									rs.getDate("WORKENDTERM"),
+									rs.getString("WORKDAY"),
+									rs.getString("WORKSTARTTIME"),
+									rs.getString("WORKENDTIME"),
+									rs.getString("TERMNAME"),
+									rs.getString("WORKGENDER"),
+									rs.getInt("WORKAGE"),
+									rs.getString("WORKEDU"),
+									rs.getDate("STARTDATE"),
+									rs.getString("INCRUITSTATUS"),
+									rs.getDate("ENDDATE"),
+									rs.getString("WORKFORM"),
+									rs.getInt("SALARY"),
+									rs.getInt("APPLYPRODUCT"),
+									rs.getString("PTITLE"),
+									rs.getString("REXPLAIN")
 									));
 			}
 			
@@ -151,11 +189,28 @@ public class ManageIncruitDao {
 			if(rs.next()) {
 
 				incruit = new Incruit(
-									rs.getInt("PCODE"),
-									rs.getString("PTITLE"),
-									rs.getString("PEXPLAIN"),
-									rs.getInt("PPAY")
-									));
+										rs.getInt("WNUM"),
+										rs.getString("WTITLE"),
+										rs.getInt("ONUM"),
+										rs.getString("OPNAME"),
+										rs.getDate("WORKSTARTTERM"),
+										rs.getDate("WORKENDTERM"),
+										rs.getString("WORKDAY"),
+										rs.getString("WORKSTARTTIME"),
+										rs.getString("WORKENDTIME"),
+										rs.getString("TERMNAME"),
+										rs.getString("WORKGENDER"),
+										rs.getInt("WORKAGE"),
+										rs.getString("WORKEDU"),
+										rs.getDate("STARTDATE"),
+										rs.getString("INCRUITSTATUS"),
+										rs.getDate("ENDDATE"),
+										rs.getString("WORKFORM"),
+										rs.getInt("SALARY"),
+										rs.getInt("APPLYPRODUCT"),
+										rs.getString("PTITLE"),
+										rs.getString("REXPLAIN")
+										);
 			}
 			
 		}catch (SQLException e) {
@@ -196,7 +251,7 @@ public class ManageIncruitDao {
 		
 	}
 	
-	public IncruitProduct selectProduct(Connection conn, int pNum) {
+	public IncruitProduct selectProduct(Connection conn, int pCode) {
 		
 		IncruitProduct prod = null;	
 		
@@ -208,7 +263,7 @@ public class ManageIncruitDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setInt(1, pNum);
+			pstmt.setInt(1, pCode);
 			
 			rs = pstmt.executeQuery();
 			
