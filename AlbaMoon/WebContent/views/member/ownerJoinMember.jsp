@@ -4,13 +4,54 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <title>Insert title here</title>
+<style>
+
+	form{
+		/* border: 1px solid black; */
+		width: 650px;
+        resize: none;
+	}
+
+	table{
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: auto;
+	}
+
+	td{
+		/* border: 1px solid black; */
+		font-size: 10px;
+		padding: 7px;
+	}
+	b{
+		font-size: 20px;
+	}
+
+	#btn{
+		text-align: center;
+	}
+
+	.btn{
+		height: 50px;
+        width: 130px;
+        border:none;
+        background: rgb(176, 19, 242); 
+	}
+
+
+</style>
+
 </head>
 <body>
 		<div class="output">
 				<form onsubmit="return validate();" method="post" action="<%= request.getContextPath()%>/empInsert.me ">
 				<br>
-				<h2>회원가입</h2>
+				<h2 align="center">기업회원 가입</h2>
 					
 				<b>이용약관에 모두 동의 합니다</b>
 				<td colspan="3"><input type="checkbox">
@@ -42,22 +83,24 @@
 						<td><input type="password" size="28" maxlength="16" placeholder="비밀번호 확인"></td>		
 						<td><label></label></td>
 					</tr>
-	
-					<tr>
-						<td><b>성명</b></td>
-						<td><input type="text" size="28" maxlength="5" placeholder="성명입력"></input></td>
+
 					
-					</tr>
-				
 					<tr>
-						<td><b>주민등록번호</b></td>
-						<td>
-							<input type="text" size="10" maxlength="6" placeholder=""></input> - 
-							<input type="password" size="11" maxlength="7" placeholder=""></input>
-							<td><div></div></td>
-						</td>
+						<td><b>대표자 성명</b></td>
+						<td><input type="text" size="28" maxlength="5" placeholder="성명입력"></input></td>
+						
 					</tr>
-	
+					
+					<tr>
+						<td><b>사업자 등록번호</b></td>
+						<td>
+							<input type="text" size="4" maxlength="3"> - 
+							<input type="text" size="3" maxlength="2"> -
+							<input type="text" size="6" maxlength="5">			
+						</td>
+						<td><div></div></td>
+					</tr>
+					
 					<tr>
 						<td><b>메일주소</b></td>
 						<td>

@@ -54,7 +54,7 @@
 	<div class="output">
 			<form onsubmit="return validate();" method="post" action="<%= request.getContextPath()%>/empInsert.me ">
 			<br>
-			<h2>회원가입</h2>
+			<h2 align="center">개인회원 가입</h2>
 				
 			<b>이용약관에 모두 동의 합니다</b>
 			<td colspan="3"><input type="checkbox">
@@ -71,13 +71,13 @@
 
 				<tr>
 					<td><b>아이디</b></td>
-					<td><input type="text" size="28" maxlength="15" placeholder="4~15자 영문, 숫자 입력"></input></td>
+					<td><input type="text" name="" size="28" maxlength="15" placeholder="4~15자 영문, 숫자 입력"></input></td>
 					<td><label></label></td>
 				</tr>
 		
 				<tr>
 					<td><b>비밀번호</b></td>
-					<td><input type="password" size="28" maxlength="16" placeholder="8~16자 영문, 숫자 입력"></input></td>
+					<td><input type="password" name="" size="28" maxlength="16" placeholder="8~16자 영문, 숫자 입력"></input></td>
 					<td><label></label></td>
 				</tr>
 		
@@ -89,15 +89,15 @@
 
 				<tr>
 					<td><b>성명</b></td>
-					<td><input type="text" size="28" maxlength="5" placeholder="성명입력"></input></td>
+					<td><input type="text" name="" size="28" maxlength="5" placeholder="성명입력"></input></td>
 				
 				</tr>
 			
 				<tr>
 					<td><b>주민등록번호</b></td>
 					<td>
-						<input type="text" size="10" maxlength="6" placeholder=""></input> - 
-						<input type="password" size="11" maxlength="7" placeholder=""></input>
+						<input type="text" name="" size="10" maxlength="6" placeholder=""></input> - 
+						<input type="password" name="" size="11" maxlength="7" placeholder=""></input>
 						<td><div></div></td>
 					</td>
 				</tr>
@@ -105,12 +105,12 @@
 				<tr>
 					<td><b>메일주소</b></td>
 					<td>
-						<input type="email" size="10"></input> @ 
-						<select>
-							<option>gmail.com</option>
-							<option>naver.com</option>
-							<option>daum.net</option>
-							<option>nate.com</option>
+						<input type="email" name="" size="10"></input> @ 
+						<select name="">
+							<option value="">gmail.com</option>
+							<option value="">naver.com</option>
+							<option value="">daum.net</option>
+							<option value="">nate.com</option>
 						</select>
 						
 					</td>
@@ -121,12 +121,12 @@
 					<td><b>휴대전화</b></td>
 					<td>
 						<select>
-							<option>010</option>
-							<option>011</option>
-							<option>016</option>
-							<option>017</option>
-							<option>018</option>
-							<option>019</option>
+							<option value="010">010</option>
+							<option value="011">011</option>
+							<option value="016">016</option>
+							<option value="017">017</option>
+							<option value="018">018</option>
+							<option value="019">019</option>
 						</select> - 
 						<input type="text" size="5" maxlength="4"> -
 						<input type="text" size="5" maxlength="4">
@@ -143,8 +143,8 @@
 			</table>
 			<br><br>
 			<div id="btn">
-				<button type="submit" name="insertBtn" class="btn btn-secondary">회원가입</button>
 				<button type="reset" name="insertBtn" class="btn btn-secondary">다시입력</button>
+				<button type="submit" name="insertBtn" class="btn btn-secondary">회원가입</button>
 			</div>
 		</form>
 	</div>
